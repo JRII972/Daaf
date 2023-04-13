@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include daaf *.css
+recursive-include daaf *.csv
+recursive-include daaf *.html
+recursive-include daaf *.ico
+recursive-include daaf *.js
+recursive-include daaf *.json
+recursive-include daaf *.md
+recursive-include daaf *.png
+recursive-include daaf *.py
+recursive-include daaf *.svg
+recursive-include daaf *.txt
+recursive-exclude daaf *.pyc
