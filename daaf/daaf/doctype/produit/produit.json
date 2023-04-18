@@ -1,0 +1,114 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:nom",
+ "creation": "2023-04-13 12:59:09.616105",
+ "default_view": "List",
+ "description": "Produit",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "nom",
+  "type",
+  "categorie",
+  "column_break_vfk1",
+  "caption",
+  "cycle_de_production_tab",
+  "table_erwm",
+  "code_produit_tab",
+  "pac",
+  "douane",
+  "ra2020"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "fieldname": "nom",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Nom",
+   "options": "Name",
+   "reqd": 1,
+   "translatable": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "V\u00e9g\u00e9tale\nAnimal\nProduit alimentaire\nProduit phytosanitaire / Engrais\nAutre",
+   "reqd": 1
+  },
+  {
+   "fieldname": "categorie",
+   "fieldtype": "Link",
+   "label": "Cat\u00e9gorie",
+   "options": "Categorie produit"
+  },
+  {
+   "fieldname": "column_break_vfk1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "caption",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  },
+  {
+   "fieldname": "code_produit_tab",
+   "fieldtype": "Tab Break",
+   "label": "Code produit"
+  },
+  {
+   "fieldname": "pac",
+   "fieldtype": "Data",
+   "label": "Code PAC"
+  },
+  {
+   "fieldname": "douane",
+   "fieldtype": "Data",
+   "label": "Code Douane"
+  },
+  {
+   "fieldname": "ra2020",
+   "fieldtype": "Data",
+   "label": "RA2020"
+  },
+  {
+   "fieldname": "cycle_de_production_tab",
+   "fieldtype": "Tab Break",
+   "label": "Cycle de production"
+  },
+  {
+   "fieldname": "table_erwm",
+   "fieldtype": "Table",
+   "options": "Cycle de production"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-04-13 16:07:25.029562",
+ "modified_by": "Administrator",
+ "module": "Daaf",
+ "name": "Produit",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

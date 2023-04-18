@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:PPROD-{MM}-{Produit}-{####}",
+ "creation": "2023-04-13 17:27:45.083348",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "produit",
+  "surface",
+  "column_break_9mhy",
+  "ville",
+  "production_section",
+  "mode_prod",
+  "valeur",
+  "column_break_tfbt",
+  "volume",
+  "unite"
+ ],
+ "fields": [
+  {
+   "fieldname": "produit",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Produit",
+   "options": "Produit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "surface",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Surface",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ville",
+   "fieldtype": "Data",
+   "label": "Ville"
+  },
+  {
+   "fieldname": "production_section",
+   "fieldtype": "Section Break",
+   "label": "Production"
+  },
+  {
+   "fieldname": "mode_prod",
+   "fieldtype": "Data",
+   "label": "Mode de production",
+   "options": "Mode de production"
+  },
+  {
+   "fieldname": "volume",
+   "fieldtype": "Float",
+   "label": "Volume"
+  },
+  {
+   "fieldname": "unite",
+   "fieldtype": "Link",
+   "label": "Unite",
+   "options": "Unite"
+  },
+  {
+   "fieldname": "valeur",
+   "fieldtype": "Currency",
+   "label": "Valeur"
+  },
+  {
+   "fieldname": "column_break_9mhy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_tfbt",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-04-13 17:32:00.723007",
+ "modified_by": "Administrator",
+ "module": "Sisep",
+ "name": "Releve prix et production",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

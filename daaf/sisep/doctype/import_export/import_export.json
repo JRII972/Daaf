@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-04-13 17:17:04.506383",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "produit",
+  "date",
+  "country",
+  "all_country",
+  "column_break_hu8n",
+  "qtt_export",
+  "val_export",
+  "qtt_import",
+  "val_import"
+ ],
+ "fields": [
+  {
+   "fieldname": "produit",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Produit",
+   "options": "Produit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Pays",
+   "options": "Country"
+  },
+  {
+   "default": "0",
+   "fieldname": "all_country",
+   "fieldtype": "Check",
+   "label": "Totale"
+  },
+  {
+   "fieldname": "column_break_hu8n",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "qtt_export",
+   "fieldtype": "Float",
+   "label": "Quantit\u00e9 export\u00e9"
+  },
+  {
+   "fieldname": "val_export",
+   "fieldtype": "Float",
+   "label": "Valeur export\u00e9"
+  },
+  {
+   "fieldname": "qtt_import",
+   "fieldtype": "Float",
+   "label": "Quantit\u00e9 import\u00e9"
+  },
+  {
+   "fieldname": "val_import",
+   "fieldtype": "Float",
+   "label": "Valeur export\u00e9"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-04-13 17:17:04.506383",
+ "modified_by": "Administrator",
+ "module": "Sisep",
+ "name": "Import Export",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

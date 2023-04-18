@@ -1,0 +1,106 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-04-13 16:31:42.881176",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "surface",
+  "production_column",
+  "total",
+  "valeur_prod_total",
+  "biologique",
+  "valeur_prod_bio",
+  "valeur_column",
+  "unit\u00e9_total",
+  "unit\u00e9_bio"
+ ],
+ "fields": [
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "description": "Surface en ha",
+   "fieldname": "surface",
+   "fieldtype": "Data",
+   "label": "Surface"
+  },
+  {
+   "fieldname": "production_column",
+   "fieldtype": "Column Break",
+   "label": "Production"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Total",
+   "reqd": 1
+  },
+  {
+   "fieldname": "biologique",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Biologique",
+   "reqd": 1
+  },
+  {
+   "fieldname": "valeur_column",
+   "fieldtype": "Column Break",
+   "label": "Unit\u00e9"
+  },
+  {
+   "fieldname": "valeur_prod_total",
+   "fieldtype": "Data",
+   "label": "Valeur de la production"
+  },
+  {
+   "fieldname": "valeur_prod_bio",
+   "fieldtype": "Data",
+   "label": "Valeur de la production biologie"
+  },
+  {
+   "fieldname": "unit\u00e9_total",
+   "fieldtype": "Link",
+   "label": "Unit\u00e9 total",
+   "options": "Unite"
+  },
+  {
+   "fieldname": "unit\u00e9_bio",
+   "fieldtype": "Link",
+   "label": "Unit\u00e9 Bio",
+   "options": "Unite"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-04-13 16:39:25.867405",
+ "modified_by": "Administrator",
+ "module": "Daaf",
+ "name": "Production",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

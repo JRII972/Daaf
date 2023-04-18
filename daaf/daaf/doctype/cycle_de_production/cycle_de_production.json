@@ -1,0 +1,65 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-04-13 16:06:58.609026",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "annually",
+  "debut",
+  "fin",
+  "p\u00e9riodicit\u00e9_mois"
+ ],
+ "fields": [
+  {
+   "allow_in_quick_entry": 1,
+   "bold": 1,
+   "default": "0",
+   "fieldname": "annually",
+   "fieldtype": "Check",
+   "label": "Production sur toute l'ann\u00e9e"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "bold": 1,
+   "depends_on": "eval:doc.annually != 1",
+   "fieldname": "debut",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "D\u00e9but",
+   "mandatory_depends_on": "eval:doc.annually != 1"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "bold": 1,
+   "depends_on": "eval:doc.annually != 1;",
+   "fieldname": "fin",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Fin",
+   "mandatory_depends_on": "eval:doc.annually != 1;"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "bold": 1,
+   "depends_on": "eval:doc.annually == 1;",
+   "fieldname": "p\u00e9riodicit\u00e9_mois",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "P\u00e9riodicit\u00e9 (mois)",
+   "mandatory_depends_on": "eval:doc.annually == 1;"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-04-13 16:12:05.388013",
+ "modified_by": "Administrator",
+ "module": "Daaf",
+ "name": "Cycle de production",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

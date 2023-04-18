@@ -1,0 +1,67 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-04-13 17:28:10.282399",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "exploitation",
+  "column_break_zwbd",
+  "date",
+  "relev\u00e9_section",
+  "releve"
+ ],
+ "fields": [
+  {
+   "fieldname": "exploitation",
+   "fieldtype": "Data",
+   "label": "Exploitation"
+  },
+  {
+   "fieldname": "column_break_zwbd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "relev\u00e9_section",
+   "fieldtype": "Section Break",
+   "label": "Relev\u00e9"
+  },
+  {
+   "fieldname": "releve",
+   "fieldtype": "Table",
+   "label": "Relev\u00e9",
+   "options": "Releve prix et production"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-04-13 17:28:10.282399",
+ "modified_by": "Administrator",
+ "module": "Sisep",
+ "name": "Prix et production",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
