@@ -6,8 +6,10 @@
  "engine": "InnoDB",
  "field_order": [
   "familiale",
+  "nombre",
   "column_break_4cd6",
   "sexe",
+  "etp",
   "section_break_qda2",
   "type_emploie",
   "column_break_klmo",
@@ -100,12 +102,22 @@
    "fieldname": "nombre_de_semaines",
    "fieldtype": "Float",
    "label": "Nombre de semaines"
+  },
+  {
+   "fieldname": "nombre",
+   "fieldtype": "Int",
+   "label": "Nombre"
+  },
+  {
+   "fieldname": "etp",
+   "fieldtype": "Float",
+   "label": "ETP"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-02 10:06:12.610520",
+ "modified": "2023-05-04 12:07:59.805268",
  "modified_by": "Administrator",
  "module": "Daaf",
  "name": "Main d oeuvre",

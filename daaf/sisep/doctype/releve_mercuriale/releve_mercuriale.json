@@ -9,8 +9,10 @@
   "prix_vente",
   "prix_ref",
   "column_break_20ge",
-  "quantit\u00e9_vendu",
-  "unit\u00e9"
+  "quantit\u00e9",
+  "unit\u00e9",
+  "quantite_ref",
+  "unite_ref"
  ],
  "fields": [
   {
@@ -24,35 +26,48 @@
   {
    "fieldname": "prix_vente",
    "fieldtype": "Currency",
-   "label": "Prix de vente"
-  },
-  {
-   "fieldname": "quantit\u00e9_vendu",
-   "fieldtype": "Float",
-   "label": "Quantit\u00e9 vendu"
+   "label": "Prix de vente",
+   "reqd": 1
   },
   {
    "fieldname": "unit\u00e9",
    "fieldtype": "Link",
    "label": "Unit\u00e9",
-   "options": "Unite"
+   "options": "Unite",
+   "reqd": 1
   },
   {
    "description": "Prix dans l'unit\u00e9 de r\u00e9f\u00e9rence kg/L/Unitaire",
    "fieldname": "prix_ref",
    "fieldtype": "Data",
-   "label": "prix_ref",
-   "read_only": 1
+   "label": "prix_ref"
   },
   {
    "fieldname": "column_break_20ge",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "quantit\u00e9",
+   "fieldtype": "Float",
+   "label": "Quantit\u00e9 vendu",
+   "reqd": 1
+  },
+  {
+   "fieldname": "quantite_ref",
+   "fieldtype": "Float",
+   "label": "Quantite_ref"
+  },
+  {
+   "fieldname": "unite_ref",
+   "fieldtype": "Link",
+   "label": "unite_ref",
+   "options": "Unite"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-04-13 17:05:28.562001",
+ "modified": "2023-05-15 12:03:04.006666",
  "modified_by": "Administrator",
  "module": "Sisep",
  "name": "Releve Mercuriale",

@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:nom",
  "creation": "2023-04-13 16:30:45.380705",
  "default_view": "List",
  "doctype": "DocType",
@@ -8,14 +9,19 @@
  "engine": "InnoDB",
  "field_order": [
   "nom",
+  "symbole",
   "coef",
-  "unit_ref"
+  "unit_ref",
+  "unitaire"
  ],
  "fields": [
   {
    "fieldname": "nom",
    "fieldtype": "Data",
-   "label": "Nom"
+   "in_list_view": 1,
+   "label": "Nom",
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "coef",
@@ -27,14 +33,28 @@
    "fieldtype": "Link",
    "label": "Unit\u00e9 de r\u00e9frence",
    "options": "Unite"
+  },
+  {
+   "fieldname": "symbole",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "symbole",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "unitaire",
+   "fieldtype": "Check",
+   "label": "Unitaire"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-04-13 16:30:56.837965",
+ "modified": "2023-05-15 11:00:06.587943",
  "modified_by": "Administrator",
  "module": "Daaf",
  "name": "Unite",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
