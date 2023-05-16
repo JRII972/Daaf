@@ -3,6 +3,7 @@
  "allow_rename": 1,
  "creation": "2023-04-13 17:02:26.316047",
  "doctype": "DocType",
+ "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
   "produit",
@@ -12,13 +13,16 @@
   "quantit\u00e9",
   "unit\u00e9",
   "quantite_ref",
-  "unite_ref"
+  "unite_ref",
+  "date"
  ],
  "fields": [
   {
    "fieldname": "produit",
    "fieldtype": "Link",
+   "in_filter": 1,
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Produit",
    "options": "Produit",
    "reqd": 1
@@ -62,12 +66,17 @@
    "fieldtype": "Link",
    "label": "unite_ref",
    "options": "Unite"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date du relev\u00e9"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-15 12:03:04.006666",
+ "modified": "2023-05-16 09:31:14.103962",
  "modified_by": "Administrator",
  "module": "Sisep",
  "name": "Releve Mercuriale",

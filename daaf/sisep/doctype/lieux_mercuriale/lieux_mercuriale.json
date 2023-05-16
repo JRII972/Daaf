@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "field:nom",
  "creation": "2023-04-13 16:58:43.274580",
  "default_view": "List",
  "doctype": "DocType",
@@ -18,7 +19,8 @@
    "in_list_view": 1,
    "label": "Nom",
    "options": "Name",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "geolocation",
@@ -35,10 +37,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-04-13 16:58:43.274580",
+ "modified": "2023-05-16 09:19:34.461384",
  "modified_by": "Administrator",
  "module": "Sisep",
  "name": "Lieux Mercuriale",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

@@ -1,13 +1,20 @@
 // Copyright (c) 2023, SISEP - DAAF and contributors
 // For license information, please see license.txt
 
-// frappe.ui.form.on("Prix et Marche", {
-// 	refresh(frm) {
+frappe.ui.form.on("Prix et Marche", {
+	refresh(frm) {
 
-// 	},
-// });
+	},
+    before_save(frm) {
+        // frm.doc.relevé.forEach(
+        //     function(value, i) {
+        //         console.log(i, value)
+        //     }
+        // )
+    }
+});
 
-function calc_price(row){
+function calc_price(frm, row){
     console.log(row.unité)
     frappe.db.get_doc('Unite', row.unité)
     .then(unite => {
@@ -41,12 +48,12 @@ frappe.ui.form.on('Releve Mercuriale', {
             if (row.quantité > 0){
                 
                 if ( row.unité ){
-                    calc_price(row)
+                    calc_price(frm, row)
                 }
             }
         }
     },
-    Quantite_ref(frm, cdt, cdn) {
+    quantité(frm, cdt, cdn) {
         let row = frappe.get_doc(cdt, cdn);
         
         if (row.quantité <= 0 ){
@@ -59,26 +66,26 @@ frappe.ui.form.on('Releve Mercuriale', {
             if (row.prix_vente > 0){
                 
                 if ( row.unité ){
-                    calc_price(row)
+                    calc_price(frm, row)
                 }
             }
         }
     },
-    Quantite_ref(frm, cdt, cdn) {
+    unité(frm, cdt, cdn) {
         let row = frappe.get_doc(cdt, cdn);
         
-        if (row.quantité <= & row.prix_vente > 0){
+        if ( (row.quantité > 0) & (row.prix_vente > 0) ){
                 
-                if ( row.unité ){
-                    calc_price(row)
-                } else {
-                    frappe.msgprint({
-                        title: __('Notification'),
-                        indicator: 'red',
-                        message: __('Unité obligatoire')
-                    });
-                }
+            if ( row.unité ){
+                calc_price(frm, row)
+            } else {
+                frappe.msgprint({
+                    title: __('Notification'),
+                    indicator: 'red',
+                    message: __('Unité obligatoire')
+                });
             }
         }
     }
+    
 })
