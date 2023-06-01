@@ -199,3 +199,14 @@ app_license = "MIT"
 # auth_hooks = [
 #	"daaf.auth.validate"
 # ]
+
+
+jinja = {
+    "filters": [
+        "daaf.utils.jinja.format_currency",
+        "daaf.utils.jinja.date_formate",
+        "daaf.utils.jinja.datetime_formate",
+        "daaf.utils.jinja.lastMonth",
+        "daaf.utils.jinja.variation_mercuriale",
+    ]
+}

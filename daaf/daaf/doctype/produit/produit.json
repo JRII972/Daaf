@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:nom",
  "creation": "2023-04-13 12:59:09.616105",
@@ -19,7 +20,8 @@
   "code_produit_tab",
   "pac",
   "douane",
-  "ra2020"
+  "ra2020",
+  "old_mercuriale_code"
  ],
  "fields": [
   {
@@ -28,7 +30,6 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Nom",
-   "options": "Name",
    "reqd": 1,
    "translatable": 1,
    "unique": 1
@@ -63,17 +64,20 @@
   {
    "fieldname": "pac",
    "fieldtype": "Data",
-   "label": "Code PAC"
+   "label": "Code PAC",
+   "unique": 1
   },
   {
    "fieldname": "douane",
    "fieldtype": "Data",
-   "label": "Code Douane"
+   "label": "Code Douane",
+   "unique": 1
   },
   {
    "fieldname": "ra2020",
    "fieldtype": "Data",
-   "label": "RA2020"
+   "label": "RA2020",
+   "unique": 1
   },
   {
    "fieldname": "cycle_de_production_tab",
@@ -84,11 +88,16 @@
    "fieldname": "table_erwm",
    "fieldtype": "Table",
    "options": "Cycle de production"
+  },
+  {
+   "fieldname": "old_mercuriale_code",
+   "fieldtype": "Data",
+   "label": "Old_Mercuriale_Code"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-04-13 16:07:25.029562",
+ "modified": "2023-05-23 09:56:03.556875",
  "modified_by": "Administrator",
  "module": "Daaf",
  "name": "Produit",
