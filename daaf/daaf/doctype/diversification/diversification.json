@@ -1,0 +1,52 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-05-25 15:21:59.635792",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "type_dactivit\u00e9_de_diversification",
+  "activit\u00e9_en_nom_propre",
+  "activit\u00e9_par_le_biais_dune_autre_entit\u00e9",
+  "transformation_en_sous_traitance"
+ ],
+ "fields": [
+  {
+   "fieldname": "type_dactivit\u00e9_de_diversification",
+   "fieldtype": "Data",
+   "label": "Type d'activit\u00e9 de diversification"
+  },
+  {
+   "default": "0",
+   "fieldname": "activit\u00e9_en_nom_propre",
+   "fieldtype": "Check",
+   "label": "Activit\u00e9 en nom propre"
+  },
+  {
+   "default": "0",
+   "fieldname": "activit\u00e9_par_le_biais_dune_autre_entit\u00e9",
+   "fieldtype": "Check",
+   "label": "Activit\u00e9 par le biais d'une autre entit\u00e9"
+  },
+  {
+   "default": "0",
+   "fieldname": "transformation_en_sous_traitance",
+   "fieldtype": "Check",
+   "label": "Transformation en sous-traitance"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-05-25 15:21:59.635792",
+ "modified_by": "Administrator",
+ "module": "Daaf",
+ "name": "Diversification",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,209 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "format:SYNOP-{nom}-{date}",
+ "creation": "2023-05-24 09:47:27.867261",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "id_omm_station",
+  "date",
+  "pression_au_niveau_mer",
+  "variation_de_pression_en_3_heures",
+  "direction_du_vent_moyen_10_mn",
+  "vitesse_du_vent_moyen_10_mn",
+  "temp\u00e9rature",
+  "point_de_ros\u00e9e",
+  "humidit\u00e9",
+  "temp\u00e9rature_minimale_sur_12_heures",
+  "temp\u00e9rature_minimale_sur_24_heures",
+  "temp\u00e9rature_maximale_sur_12_heures",
+  "temp\u00e9rature_maximale_sur_24_heures",
+  "temp\u00e9rature_c",
+  "temp\u00e9rature_minimale_12_heures_c",
+  "temp\u00e9rature_minimale_24_heures_c",
+  "temp\u00e9rature_maximale_12_c",
+  "temp\u00e9rature_maximale_24_c",
+  "temperature_minimale_du_sol_sur_12_heures_c",
+  "communes_name",
+  "epci_name",
+  "department_name",
+  "region_name",
+  "mois_de_l_annee",
+  "type_de_tendance_barom\u00e9trique",
+  "temps_pass\u00e9_1",
+  "temps_pr\u00e9sent",
+  "nom"
+ ],
+ "fields": [
+  {
+   "fieldname": "id_omm_station",
+   "fieldtype": "Int",
+   "label": "ID OMM station"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Datetime",
+   "label": "Date"
+  },
+  {
+   "fieldname": "pression_au_niveau_mer",
+   "fieldtype": "Int",
+   "label": "Pression au niveau mer"
+  },
+  {
+   "fieldname": "variation_de_pression_en_3_heures",
+   "fieldtype": "Int",
+   "label": "Variation de pression en 3 heures"
+  },
+  {
+   "fieldname": "direction_du_vent_moyen_10_mn",
+   "fieldtype": "Int",
+   "label": "Direction du vent moyen 10 mn"
+  },
+  {
+   "fieldname": "vitesse_du_vent_moyen_10_mn",
+   "fieldtype": "Float",
+   "label": "Vitesse du vent moyen 10 mn"
+  },
+  {
+   "fieldname": "temp\u00e9rature",
+   "fieldtype": "Float",
+   "label": "Temp\u00e9rature"
+  },
+  {
+   "fieldname": "point_de_ros\u00e9e",
+   "fieldtype": "Float",
+   "label": "Point de ros\u00e9e"
+  },
+  {
+   "fieldname": "humidit\u00e9",
+   "fieldtype": "Int",
+   "label": "Humidit\u00e9"
+  },
+  {
+   "fieldname": "temp\u00e9rature_minimale_sur_12_heures",
+   "fieldtype": "Float",
+   "label": "Temp\u00e9rature minimale sur 12 heures"
+  },
+  {
+   "fieldname": "temp\u00e9rature_minimale_sur_24_heures",
+   "fieldtype": "Float",
+   "label": "Temp\u00e9rature minimale sur 24 heures"
+  },
+  {
+   "fieldname": "temp\u00e9rature_maximale_sur_12_heures",
+   "fieldtype": "Float",
+   "label": "Temp\u00e9rature maximale sur 12 heures"
+  },
+  {
+   "fieldname": "temp\u00e9rature_maximale_sur_24_heures",
+   "fieldtype": "Float",
+   "label": "Temp\u00e9rature maximale sur 24 heures"
+  },
+  {
+   "fieldname": "temp\u00e9rature_c",
+   "fieldtype": "Float",
+   "label": "Temp\u00e9rature (\u00b0C)"
+  },
+  {
+   "fieldname": "temp\u00e9rature_minimale_12_heures_c",
+   "fieldtype": "Float",
+   "label": "Temp\u00e9rature minimale sur 12 heures (\u00b0C)"
+  },
+  {
+   "fieldname": "temp\u00e9rature_minimale_24_heures_c",
+   "fieldtype": "Float",
+   "label": "Temp\u00e9rature minimale sur 24 heures (\u00b0C)"
+  },
+  {
+   "fieldname": "temp\u00e9rature_maximale_12_c",
+   "fieldtype": "Float",
+   "label": "Temp\u00e9rature maximale sur 12 heures (\u00b0C)"
+  },
+  {
+   "fieldname": "temp\u00e9rature_maximale_24_c",
+   "fieldtype": "Float",
+   "label": "Temp\u00e9rature maximale sur 24 heures (\u00b0C)"
+  },
+  {
+   "fieldname": "communes_name",
+   "fieldtype": "Data",
+   "label": "communes (name)"
+  },
+  {
+   "fieldname": "epci_name",
+   "fieldtype": "Data",
+   "label": "EPCI (name)"
+  },
+  {
+   "fieldname": "department_name",
+   "fieldtype": "Data",
+   "label": "department (name)"
+  },
+  {
+   "fieldname": "region_name",
+   "fieldtype": "Data",
+   "label": "region (name)"
+  },
+  {
+   "fieldname": "mois_de_l_annee",
+   "fieldtype": "Data",
+   "label": "mois_de_l_annee"
+  },
+  {
+   "fieldname": "type_de_tendance_barom\u00e9trique",
+   "fieldtype": "Data",
+   "label": "Type de tendance barom\u00e9trique"
+  },
+  {
+   "fieldname": "temps_pass\u00e9_1",
+   "fieldtype": "Data",
+   "label": "Temps pass\u00e9 1"
+  },
+  {
+   "fieldname": "temps_pr\u00e9sent",
+   "fieldtype": "Data",
+   "label": "Temps pr\u00e9sent"
+  },
+  {
+   "fieldname": "nom",
+   "fieldtype": "Data",
+   "label": "Nom"
+  },
+  {
+   "fieldname": "temperature_minimale_du_sol_sur_12_heures_c",
+   "fieldtype": "Float",
+   "label": "Temp\u00e9rature minimale du sol sur 12 heures (en \u00b0C)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-05-24 11:02:52.824491",
+ "modified_by": "Administrator",
+ "module": "Daaf",
+ "name": "Observation meteorologique historiques France SYNOP",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
