@@ -9,8 +9,12 @@
  "engine": "InnoDB",
  "field_order": [
   "nom",
-  "geolocation",
-  "description"
+  "description",
+  "lft",
+  "rgt",
+  "is_group",
+  "old_parent",
+  "parent_lieux_mercuriale"
  ],
  "fields": [
   {
@@ -23,25 +27,54 @@
    "unique": 1
   },
   {
-   "fieldname": "geolocation",
-   "fieldtype": "Geolocation",
-   "in_list_view": 1,
-   "label": "Lieu",
-   "reqd": 1
-  },
-  {
    "fieldname": "description",
    "fieldtype": "Long Text",
    "label": "Description"
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Left",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Right",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "label": "Old Parent",
+   "options": "Lieux Mercuriale"
+  },
+  {
+   "fieldname": "parent_lieux_mercuriale",
+   "fieldtype": "Link",
+   "label": "Parent Lieux Mercuriale",
+   "options": "Lieux Mercuriale"
   }
  ],
  "index_web_pages_for_search": 1,
+ "is_tree": 1,
  "links": [],
- "modified": "2023-05-16 09:19:34.461384",
+ "modified": "2023-06-07 16:23:16.565449",
  "modified_by": "Administrator",
  "module": "Sisep",
  "name": "Lieux Mercuriale",
  "naming_rule": "By fieldname",
+ "nsm_parent_field": "parent_lieux_mercuriale",
  "owner": "Administrator",
  "permissions": [
   {

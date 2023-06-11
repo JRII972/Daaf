@@ -35,9 +35,18 @@ frappe.ui.form.on("Prix et Marche", {
         frm.fields_dict.date.datepicker.update({
             maxDate: new Date(frappe.datetime.get_today())
         });
+
+        frm.set_query('lieu', () => {
+            return {
+                filters: {
+                    is_group: false
+                }
+            }
+        })
     },
 	refresh(frm) {
         setupIntro(frm)
+        
 	},
     before_save(frm) {
         frm.doc.error_msg = ''
@@ -246,3 +255,6 @@ frappe.ui.form.on('Releve Mercuriale', {
     }
     
 })
+
+
+

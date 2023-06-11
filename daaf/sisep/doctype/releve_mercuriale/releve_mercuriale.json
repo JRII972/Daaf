@@ -22,7 +22,12 @@
   "unit\u00e9_de_r\u00e9f\u00e9rence",
   "commentaire",
   "prevent_validation",
-  "pass"
+  "pass",
+  "prevent_calculation",
+  "nutriscore",
+  "image",
+  "bio",
+  "origine"
  ],
  "fields": [
   {
@@ -134,12 +139,38 @@
    "fieldname": "pass",
    "fieldtype": "Check",
    "label": "Pass"
+  },
+  {
+   "default": "0",
+   "fieldname": "prevent_calculation",
+   "fieldtype": "Check",
+   "label": "Prevent Calculation"
+  },
+  {
+   "fieldname": "nutriscore",
+   "fieldtype": "Data",
+   "label": "NutriScore"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Image",
+   "label": "Image"
+  },
+  {
+   "fieldname": "bio",
+   "fieldtype": "Data",
+   "label": "Bio"
+  },
+  {
+   "fieldname": "origine",
+   "fieldtype": "Data",
+   "label": "Origine"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-05-31 11:50:17.059539",
+ "modified": "2023-06-08 15:38:42.907742",
  "modified_by": "Administrator",
  "module": "Sisep",
  "name": "Releve Mercuriale",
