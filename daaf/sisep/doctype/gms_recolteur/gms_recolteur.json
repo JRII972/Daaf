@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-06-08 14:59:20.619561",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "limite_similarit\u00e9_d\u00e9tection_nom_de_produit",
+  "aucun_produit_trouv\u00e9"
+ ],
+ "fields": [
+  {
+   "default": "2.5",
+   "fieldname": "limite_similarit\u00e9_d\u00e9tection_nom_de_produit",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Limite similarit\u00e9 d\u00e9tection nom de produit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "aucun_produit_trouv\u00e9",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Aucun produit trouv\u00e9",
+   "options": "Produit",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2023-06-08 14:59:20.619561",
+ "modified_by": "Administrator",
+ "module": "Sisep",
+ "name": "GMS Recolteur",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
