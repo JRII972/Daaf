@@ -1,16 +1,7 @@
 import frappe
-
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
- 
 from datetime import datetime
-from frappe.model.document import Document
-from daaf.GMS.unDeuxTroisClick import Haverst as Haverst_123Click
 from daaf.sisep.doctype.lieux_mercuriale.lieux_mercuriale import LieuxMercuriale
 from daaf.sisep.doctype.releve_mercuriale.releve_mercuriale import ReleveMercuriale
-Settings = frappe.get_doc('GMS Recolteur')
 
 
 class ReleveMercuriale():
@@ -38,13 +29,14 @@ class ReleveMercuriale():
                 self.image = data['image']
                 self.bio = data['bio']
                 self.origine = data['origine']
+                self.lien_du_produit = data['lien_du_produit']
                 
         pass
     
     def get_doc(self) -> ReleveMercuriale:
         child = frappe.new_doc("Releve Mercuriale")
         child.update({
-            'produit': self.produit,
+            # 'produit': self.produit,
             'date': self.date,
             'lieu': self.lieu,
             'prix_vente': self.prix_vente,
@@ -55,47 +47,45 @@ class ReleveMercuriale():
             'unité_de_vente': self.unité_de_vente,
             'unité_de_référence': self.unité_de_référence,
             'commentaire': self.commentaire,
-            'nutriscore': self.poids_de_référence,
-            'image': self.poids_de_référence,
-            'bio': self.poids_de_référence,
-            'origine': self.poids_de_référence,
-            'pass': self.poids_de_référence,
-            'prevent_calculation': self.poids_de_référence,
-            # 'parenttype': 'Prix et Marche',
-            # 'parentfield': 'relevé',
+            'nutriscore': self.nutriscore,
+            'image': self.image,
+            'bio': self.bio,
+            'origine': self.origine,
+            'nom_affiché': self.nom_affiché,
+            'prevent_calculation': self.prevent_calculation,
+            'prevent_check': self.prevent_check,
+            'prevent_validation': self.prevent_validation,
+            'lien_du_produit': self.lien_du_produit,
+            'parenttype': 'Prix et Marche',
+            'parentfield': 'relevé',
         })
-        
+        child.produit = child.get_product_name()
         return child
 
-    def get_product_name(produit:str) -> Document: #Product from daaf module
-        query = frappe.db.sql("""
-        SELECT *, similarity/compare FROM
-        (
-            SELECT 
-                name,
-                SIMILARITY_STRING(%(produit)s, name) as similarity,
-                COMPARE_STRING(%(produit)s, name) as compare,
-                REPLACE(name, ' ', '|')
-            FROM tabProduit
-            WHERE %(produit)s REGEXP REPLACE(name, ' ', '|') 
-        ) as q
-        WHERE (similarity/compare) > %(similarity_limit)s
-        ORDER BY compare, similarity DESC
-        """, {
-        'produit': produit,
-        'similarity_limit' : Settings.limite_similarité_détection_nom_de_produit,
+    @property
+    def lien_du_produit(self):
+        return self._lien_du_produit
+    
+    @lien_du_produit.setter
+    def lien_du_produit(self, value:str):
+        self._lien_du_produit = value
         
-        } ,as_list=1)
-        if len(query) == 0 : return Settings.aucun_produit_trouvé
-        return query[0][0]
-
+    @property
+    def nom_affiché(self):
+        return self._nom_affiché
+    
+    @nom_affiché.setter
+    def nom_affiché(self, value:str):
+        self._nom_affiché = value
+        
     @property
     def produit(self):
         return self._produit
     
     @produit.setter
     def produit(self, value:str):
-        self._produit = ReleveMercuriale.get_product_name(value)
+        self.nom_affiché = value
+        self._produit = value
     
     @property
     def date(self):
@@ -111,7 +101,7 @@ class ReleveMercuriale():
     
     @lieu.setter
     def lieu(self, value:str):
-        self._lieu = frappe.get_doc('Lieux Mercuriale', value)  
+        self._lieu = frappe.get_doc('Lieux Mercuriale', value).get_title()  
         
     @property
     def prix_vente(self):
@@ -162,7 +152,7 @@ class ReleveMercuriale():
         if value == None : 
             self._unité_de_vente = None
             return None
-        self._unité_de_vente = value #frappe.get_doc('Unite', value)  
+        self._unité_de_vente = frappe.get_doc('Unite', value).get_title()  
         
     @property
     def unité_de_référence(self):
@@ -170,7 +160,7 @@ class ReleveMercuriale():
     
     @unité_de_référence.setter
     def unité_de_référence(self, value:str):
-        self._unité_de_référence = value #frappe.get_doc('Unite', value)  
+        self._unité_de_référence = frappe.get_doc('Unite', value).get_title()  
 
     @property
     def commentaire(self):
@@ -233,8 +223,10 @@ class ReleveMercuriale():
         return self._origine
     
     @origine.setter
-    def origine(self, value:bool):
+    def origine(self, value):
+        if not value : value = None
         self._origine = value
+    
     
 class ReleveMercuriale123Click(ReleveMercuriale):
             
@@ -249,37 +241,15 @@ class ReleveMercuriale123Click(ReleveMercuriale):
         self.quantité_sur_l_étale = None
         self.unité_de_vente = None #data['unité_de_vente']
         self.unité_de_référence = data['unité_de_référence']
-        self.commentaire = data['commentaire']
+        self.commentaire = data['tag'] + '\n' + data['produit'] + '\n' + data['commentaire']
         self.prevent_check = True
         self.prevent_validation = False
         self.prevent_calculation = True
         self.nutriscore = data['nutriscore']
         self.image = data['image']
         self.bio = data['bio']
+        self.lien_du_produit = data['lien']
         self.origine = None
         
         super().__init__()
     
-       
-@frappe.whitelist()
-def test():
-    frappe.msgprint('Start')
-    data = Haverst_123Click()
-    frappe.msgprint('Havrest done')
-    print('rrr')
-    doc = frappe.new_doc('Prix et Marche')
-    doc.date = datetime.today()
-    doc.lieu = frappe.get_doc('Lieux Mercuriale', 'Dillon') 
-
-    for row in data['data']:
-        row = ReleveMercuriale123Click(row, datetime.today(), 'Dillon')
-        doc.relevé.append(row.get_doc())
-        
-    doc.insert(
-        ignore_permissions=True, # ignore write permissions during insert
-        ignore_links=True, # ignore Link validation in the document
-        ignore_if_duplicate=True, # dont insert if DuplicateEntryError is thrown
-        ignore_mandatory=True # insert even if mandatory fields are not set
-    )
-    print(doc)
-    return {'doc' : doc}

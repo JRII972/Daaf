@@ -43,6 +43,11 @@ frappe.ui.form.on("Prix et Marche", {
                 }
             }
         })
+
+        
+        frm.get_field('relevé').grid.toggle_reqd('prix_vente', true)
+        frm.get_field('relevé').grid.toggle_reqd('poids_de_l_unité_de_vente', true)
+        frm.get_field('relevé').grid.toggle_reqd('unité_de_vente', true)
     },
 	refresh(frm) {
         setupIntro(frm)
@@ -188,6 +193,8 @@ function priceVariation(frm, row){
 frappe.ui.form.on('Releve Mercuriale', {
     // cdt is Child DocType name i.e Releve Mercuriale
     // cdn is the row name for e.g bbfcb8da6a
+    onload_post_render(frm, cdt, cdn){
+    },
     before_save(frm, cdt, cdn) {
         let row = frappe.get_doc(cdt, cdn);
 

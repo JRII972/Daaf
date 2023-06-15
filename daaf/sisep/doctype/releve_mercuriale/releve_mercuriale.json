@@ -7,27 +7,30 @@
  "engine": "InnoDB",
  "field_order": [
   "produit",
+  "nom_affich\u00e9",
+  "image_hxek",
   "column_break_n4a6",
   "date",
+  "origine",
   "lieu",
+  "lien_du_produit",
+  "image",
   "section_break_zeds",
   "prix_vente",
   "prix_de_r\u00e9f\u00e9rence",
+  "prevent_validation",
+  "prevent_check",
+  "prevent_calculation",
   "column_break_20ge",
   "poids_de_l_unit\u00e9_de_vente",
   "poids_de_r\u00e9f\u00e9rence",
   "quantit\u00e9_sur_l_\u00e9tale",
+  "bio",
+  "nutriscore",
   "column_break_nmu7",
   "unit\u00e9_de_vente",
   "unit\u00e9_de_r\u00e9f\u00e9rence",
-  "commentaire",
-  "prevent_validation",
-  "pass",
-  "prevent_calculation",
-  "nutriscore",
-  "image",
-  "bio",
-  "origine"
+  "commentaire"
  ],
  "fields": [
   {
@@ -43,8 +46,7 @@
   {
    "fieldname": "prix_vente",
    "fieldtype": "Currency",
-   "label": "Prix de vente",
-   "reqd": 1
+   "label": "Prix de vente"
   },
   {
    "fieldname": "column_break_20ge",
@@ -93,10 +95,10 @@
   {
    "fieldname": "poids_de_l_unit\u00e9_de_vente",
    "fieldtype": "Float",
-   "label": "Poids de l'unit\u00e9 de vente",
-   "reqd": 1
+   "label": "Poids de l'unit\u00e9 de vente"
   },
   {
+   "default": "1",
    "depends_on": "eval:true",
    "fieldname": "poids_de_r\u00e9f\u00e9rence",
    "fieldtype": "Float",
@@ -122,8 +124,7 @@
    "fieldname": "unit\u00e9_de_vente",
    "fieldtype": "Link",
    "label": "Unit\u00e9 de vente",
-   "options": "Unite",
-   "reqd": 1
+   "options": "Unite"
   },
   {
    "depends_on": "eval:true",
@@ -133,12 +134,6 @@
    "options": "Unite",
    "read_only": 1,
    "reqd": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "pass",
-   "fieldtype": "Check",
-   "label": "Pass"
   },
   {
    "default": "0",
@@ -152,9 +147,11 @@
    "label": "NutriScore"
   },
   {
+   "depends_on": "eval:false",
    "fieldname": "image",
-   "fieldtype": "Image",
-   "label": "Image"
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "read_only": 1
   },
   {
    "fieldname": "bio",
@@ -165,12 +162,35 @@
    "fieldname": "origine",
    "fieldtype": "Data",
    "label": "Origine"
+  },
+  {
+   "default": "0",
+   "fieldname": "prevent_check",
+   "fieldtype": "Check",
+   "label": "Prevent Check"
+  },
+  {
+   "depends_on": "eval:doc.image != ''",
+   "fieldname": "image_hxek",
+   "fieldtype": "Image",
+   "options": "image",
+   "read_only": 1
+  },
+  {
+   "fieldname": "nom_affich\u00e9",
+   "fieldtype": "Data",
+   "label": "Nom affich\u00e9"
+  },
+  {
+   "fieldname": "lien_du_produit",
+   "fieldtype": "Small Text",
+   "label": "Lien du produit"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-08 15:38:42.907742",
+ "modified": "2023-06-14 16:39:05.885881",
  "modified_by": "Administrator",
  "module": "Sisep",
  "name": "Releve Mercuriale",

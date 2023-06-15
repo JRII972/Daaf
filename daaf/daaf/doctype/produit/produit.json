@@ -1,4 +1,5 @@
 {
+ "_user_tags": ",test",
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
@@ -15,6 +16,9 @@
   "categorie",
   "column_break_vfk1",
   "caption",
+  "section_break_ocal",
+  "tags",
+  "column_break_apab",
   "cycle_de_production_tab",
   "table_erwm",
   "code_produit_tab",
@@ -93,11 +97,25 @@
    "fieldname": "old_mercuriale_code",
    "fieldtype": "Data",
    "label": "Old_Mercuriale_Code"
+  },
+  {
+   "fieldname": "section_break_ocal",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Table MultiSelect",
+   "label": "Tags",
+   "options": "Variation produit link"
+  },
+  {
+   "fieldname": "column_break_apab",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-23 09:56:03.556875",
+ "modified": "2023-06-15 14:10:55.827953",
  "modified_by": "Administrator",
  "module": "Daaf",
  "name": "Produit",

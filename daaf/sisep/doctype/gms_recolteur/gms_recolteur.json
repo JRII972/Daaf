@@ -8,7 +8,9 @@
  "engine": "InnoDB",
  "field_order": [
   "limite_similarit\u00e9_d\u00e9tection_nom_de_produit",
-  "aucun_produit_trouv\u00e9"
+  "aucun_produit_trouv\u00e9",
+  "limite_sous_s\u00e9quence",
+  "limite_sous_s\u00e9quence_multiple"
  ],
  "fields": [
   {
@@ -26,12 +28,24 @@
    "label": "Aucun produit trouv\u00e9",
    "options": "Produit",
    "reqd": 1
+  },
+  {
+   "default": "2",
+   "fieldname": "limite_sous_s\u00e9quence",
+   "fieldtype": "Int",
+   "label": "Limite sous s\u00e9quence"
+  },
+  {
+   "default": "1",
+   "fieldname": "limite_sous_s\u00e9quence_multiple",
+   "fieldtype": "Int",
+   "label": "Limite sous s\u00e9quence multiple"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2023-06-08 14:59:20.619561",
+ "modified": "2023-06-15 14:11:11.798532",
  "modified_by": "Administrator",
  "module": "Sisep",
  "name": "GMS Recolteur",

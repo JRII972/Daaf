@@ -1,9 +1,9 @@
 # Copyright (c) 2023, SISEP - DAAF and contributors
 # For license information, please see license.txt
 
-import frappe
+# import frappe
 from frappe.model.document import Document
 
 
-class Produit(Document):
+class Variationproduit(Document):
 	pass

@@ -3,7 +3,7 @@
  "allow_copy": 1,
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "format:MERCURIALE-{DD}-{MM}-{lieu}",
+ "autoname": "format:{DD/{MM} {lieu} {rayon}",
  "creation": "2023-04-13 17:03:00.104924",
  "default_view": "List",
  "doctype": "DocType",
@@ -13,6 +13,7 @@
   "date",
   "column_break_xlos",
   "lieu",
+  "rayon",
   "relev\u00e9_section",
   "relev\u00e9",
   "amended_from",
@@ -64,18 +65,26 @@
    "default": "0",
    "fieldname": "prevent_validation",
    "fieldtype": "Check",
-   "label": "Prevent validation"
+   "label": "Prevent validation",
+   "read_only": 1
   },
   {
    "fieldname": "error_msg",
    "fieldtype": "Small Text",
-   "label": "Error msg"
+   "label": "Error msg",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rayon",
+   "fieldtype": "Data",
+   "label": "Rayon",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-05-26 08:51:53.759796",
+ "modified": "2023-06-15 15:39:51.516909",
  "modified_by": "Administrator",
  "module": "Sisep",
  "name": "Prix et Marche",

@@ -3,6 +3,7 @@ import io
 import re
 import requests
 import pytesseract
+from daaf.sisep.doctype.lieux_mercuriale.lieux_mercuriale import LieuxMercuriale
 from IPython.display import Image
 from json import loads, dumps
 from rich.progress import Progress
@@ -114,6 +115,7 @@ def getProduit(driver:webdriver, produit: WebElement) -> tuple[str, int, int, st
     int:image
     int:Qualite
     int:Nutriscore
+    str:Lien URL
 
     """
 
@@ -174,9 +176,28 @@ def getProduit(driver:webdriver, produit: WebElement) -> tuple[str, int, int, st
     try:
         image = produit.find_element(
             By.CSS_SELECTOR, '[class*="product-left"]').find_element(By.TAG_NAME, "img").get_attribute('src')
-        # Image(url = image)
+        
+        if image == 'https://martinique.123-click.com/pub/design/Easy-Loader.gif' : 
+            import time
+            print("Wait for image")
+            for i in range(30):
+                image = produit.find_element(
+                    By.CSS_SELECTOR, '[class*="product-left"]').find_element(By.TAG_NAME, "img").get_attribute('src')
+                if image != 'https://martinique.123-click.com/pub/design/Easy-Loader.gif' : break
+                driver.execute_script(f"window.scrollTo(0, 0.{i});")
+                time.sleep(1)
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight * 0.1);")
+            
+            
     except:
         image = None
+        
+    try:
+        lien = produit.find_element(
+            By.CSS_SELECTOR, '[class*="product-left"]').find_element(By.TAG_NAME, "a").get_attribute('href')
+        
+    except:
+        lien = None
 
     # QUALITE
     try:
@@ -211,7 +232,7 @@ def getProduit(driver:webdriver, produit: WebElement) -> tuple[str, int, int, st
     prixVente, prixUnitaire, Poids, unitePrixUnitaire = dateEnhance(
         ProduitName, prixVente, prixUnitaire, unitePrixUnitaire, Poids, uniteVente)
 
-    return ProduitName, prixVente, Poids, uniteVente, prixUnitaire, unitePrixUnitaire, Origine, image, bio, Nutriscore
+    return ProduitName, prixVente, Poids, uniteVente, prixUnitaire, unitePrixUnitaire, Origine, image, bio, Nutriscore, lien
 
 
 
@@ -237,7 +258,8 @@ def GetRangeeProduit(driver:webdriver, rayon, tag, progress = Progress()):
         'image': [],
         'bio': [],
         'nutriscore': [],
-        'tag': []
+        'lien' : [],
+        'tag': [],
     })
     
     product_List["bio"]=product_List["bio"].astype(bool)
@@ -246,10 +268,22 @@ def GetRangeeProduit(driver:webdriver, rayon, tag, progress = Progress()):
         .until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, 'div[class*="product_list"]')))
     Rangé = progress.add_task(f"[green]Havresting : {tag}...", total=None)
     
+    # Load the all page
+    from time import sleep
+    _old_url = ''
+    while (driver.current_url != _old_url):
+        _old_url = driver.current_url
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight * 0.1);")
+        sleep(1)
+        driver.execute_script("window.scrollTo(0, 0);")
+        
+    # Wait xhr payload
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight * 0.9);")
+    sleep(15)
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight * 0.1);")
+    
     while True:
         try :
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            
             produit = WebDriverWait(driver, 15, ignored_exceptions=ignored_exceptions) \
         .until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, 'div[class*="product-list-affichage-desktop"]')))
             
@@ -339,12 +373,30 @@ def Recherche(driver:webdriver, lookup):
     return  driver.current_url
     
 
+def saveToDoc(tag:str , lieu:LieuxMercuriale, date:datetime, data:pd.DataFrame):
+    import frappe
+    from daaf.GMS.releve_mercuriale import ReleveMercuriale123Click
+    doc = frappe.new_doc('Prix et Marche')
+    doc.date = datetime.today()
+    doc.lieu = frappe.get_doc('Lieux Mercuriale', 'Dillon').get_title()
 
+    for row in data['data']:
+        row = ReleveMercuriale123Click(row, datetime.today(), 'Dillon')
+        doc.relevé.append(row.get_doc())
 
-def Haverst(driver:webdriver = startEngine()):
+        
+    return doc.insert(
+        ignore_permissions=True, # ignore write permissions during insert
+        ignore_links=True, # ignore Link validation in the document
+        # ignore_if_duplicate=True, # dont insert if DuplicateEntryError is thrown
+        ignore_mandatory=True # insert even if mandatory fields are not set
+    )
+
+def Haverst(lieu:LieuxMercuriale, users:list[str], driver:webdriver = startEngine(), date=datetime.datetime.today()):
     
     link = GetRayonLink(driver)
-
+    link = link.head(2)
+    print(link)
     product_List = pd.DataFrame({
             'produit': [],
             'prix_vente': [],
@@ -356,30 +408,65 @@ def Haverst(driver:webdriver = startEngine()):
             'image': [],
             'bio': [],
             'nutriscore': [],
-            'tag': []
+            'lien': [],
+            'tag': [],
         })
+        
 
     with Progress() as progress:
         SubRayonLoop = progress.add_task(
                     "[red]Parcourt des rayons...", total=len(link['used']))
         for index, rayon in link[link['used']].iterrows():
             
-            product_List = pd.concat([product_List, GetRangeeProduit(driver, rayon['lien'], rayon['produit'], progress )], ignore_index=True)
+            tmp = GetRangeeProduit(driver, rayon['lien'], rayon['produit'], progress )
+            product_List = pd.concat([product_List, tmp], ignore_index=True)
+            
+            tmp['poids_de_l_unité_de_vente'] = [0]*len(tmp)
+            tmp['unité_de_vente'] = [0]*len(tmp)
+            tmp['commentaire'] = [""]*len(tmp)
+            tmp['prevent_calculation'] = [True]*len(tmp)
+            tmp.rename(columns={
+                "prixUnitaire": "prix_de_référence", 
+                "poids_de_l_unité_de_vente": "poids_de_référence"
+                })
+    
+            doc = saveToDoc(
+                rayon['produit'],
+                lieu,
+                date,
+                tmp
+            )
+            
+            print(doc)
+            
             progress.update(SubRayonLoop, advance=1)
         
     driver.quit()
-
-    print(product_List)
-    
+    product_List['poids_de_l_unité_de_vente'] = [0]*len(product_List)
+    product_List['unité_de_vente'] = [0]*len(product_List)
+    product_List['commentaire'] = [""]*len(product_List)
+    product_List['prevent_calculation'] = [True]*len(product_List)
     product_List.rename(columns={
         "prixUnitaire": "prix_de_référence", 
         "poids_de_l_unité_de_vente": "poids_de_référence"
         })
     
-    product_List['poids_de_l_unité_de_vente'] = [0]*len(product_List)
-    product_List['unité_de_vente'] = [0]*len(product_List)
-    product_List['commentaire'] = [""]*len(product_List)
-    product_List['prevent_calculation'] = [True]*len(product_List)
+    for user in users :
+        import frappe
+        try:
+            notification = frappe.new_doc("Notification Log")
+            notification.for_user = user
+            notification.set("type", "Alert")
+            notification.document_type = self.reminder_doctype
+            notification.document_name = self.reminder_docname
+            notification.subject = 'description'
+            notification.insert()
+        except Exception:
+            self.log_error("Failed to send reminder")
+    
+    
+    
+    
     
     return loads(product_List.to_json(orient="table"))
 
