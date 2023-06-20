@@ -1,11 +1,12 @@
 import frappe
 from datetime import datetime
+import pandas as pd
 from daaf.sisep.doctype.lieux_mercuriale.lieux_mercuriale import LieuxMercuriale
 from daaf.sisep.doctype.releve_mercuriale.releve_mercuriale import ReleveMercuriale
+from daaf.GMS.scrapper import detectUnite
 
-
-class ReleveMercuriale():
-
+class ReleveMercurialeWrapper():
+    _create_produit = False
        
     def __init__(self, **kwargs) -> None:
         if 'data' in kwargs : 
@@ -59,7 +60,7 @@ class ReleveMercuriale():
             'parenttype': 'Prix et Marche',
             'parentfield': 'relevé',
         })
-        child.produit = child.get_product_name()
+        child.produit = child.get_product_name(self._create_produit)
         return child
 
     @property
@@ -152,7 +153,7 @@ class ReleveMercuriale():
         if value == None : 
             self._unité_de_vente = None
             return None
-        self._unité_de_vente = frappe.get_doc('Unite', value).get_title()  
+        self._unité_de_vente = detectUnite(frappe.get_doc('Unite', value).get_title())  
         
     @property
     def unité_de_référence(self):
@@ -160,7 +161,7 @@ class ReleveMercuriale():
     
     @unité_de_référence.setter
     def unité_de_référence(self, value:str):
-        self._unité_de_référence = frappe.get_doc('Unite', value).get_title()  
+        self._unité_de_référence = detectUnite(frappe.get_doc('Unite', value).get_title())  
 
     @property
     def commentaire(self):
@@ -228,7 +229,7 @@ class ReleveMercuriale():
         self._origine = value
     
     
-class ReleveMercuriale123Click(ReleveMercuriale):
+class ReleveMercuriale123Click(ReleveMercurialeWrapper):
             
     def __init__(self, data:dict, date:datetime, lieu) -> None: #123_Click
         self.produit = data['produit']
@@ -247,9 +248,68 @@ class ReleveMercuriale123Click(ReleveMercuriale):
         self.prevent_calculation = True
         self.nutriscore = data['nutriscore']
         self.image = data['image']
-        self.bio = data['bio']
+        self.bio = True if data['bio'] else False
         self.lien_du_produit = data['lien']
         self.origine = None
         
         super().__init__()
     
+class ReleveMercurialeLegacy(ReleveMercurialeWrapper):
+    def __init__(self, row:pd.core.series.Series, **kwargs) -> None:
+        Settings = frappe.get_doc('GMS Recolteur')
+        self._create_produit = True
+        self.date = row['date collecte']
+        self.lieu = Settings.fdf_import if row['ID_LIEU'] == 3 else Settings.dillon_import
+        self.quantité_sur_l_étale = row['Quantité']
+        self.prix_de_référence = row['Prix unitaire']
+        self.unité_de_référence = Settings.legacy_unite
+        self.nom_affiché = row['produit']
+        
+        self.raison_tendance = row['conjoncture-motif']
+        self.tendance_constaté = row['conjoncture-tendance']
+        
+        self.prix_vente = row['Prix unitaire']
+        self.poids_de_l_unité_de_vente = 1
+        self.poids_de_référence = 1
+        self.unité_de_vente = Settings.legacy_unite
+        self.commentaire = None
+        self.prevent_check = False
+        self.prevent_validation = False
+        self.prevent_calculation = True
+        self.nutriscore = None
+        self.image = None
+        self.bio = False
+        self.origine = 'Martinique'
+        self.lien_du_produit = None
+        super().__init__(**kwargs)
+        
+    def get_doc(self) -> ReleveMercuriale:
+        child = frappe.new_doc("Releve Mercuriale")
+        child.update({
+            # 'produit': self.produit,
+            'date': self.date,
+            'lieu': self.lieu,
+            'prix_vente': self.prix_vente,
+            'prix_de_référence': self.prix_de_référence,
+            'poids_de_l_unité_de_vente': self.poids_de_l_unité_de_vente,
+            'poids_de_référence': self.poids_de_référence,
+            'quantité_sur_l_étale': self.quantité_sur_l_étale,
+            'unité_de_vente': self.unité_de_vente,
+            'unité_de_référence': self.unité_de_référence,
+            'commentaire': self.commentaire,
+            'nutriscore': self.nutriscore,
+            'image': self.image,
+            'bio': self.bio,
+            'origine': self.origine,
+            'nom_affiché': self.nom_affiché,
+            'prevent_calculation': self.prevent_calculation,
+            'prevent_check': self.prevent_check,
+            'prevent_validation': self.prevent_validation,
+            'lien_du_produit': self.lien_du_produit,
+            'tendance_constaté': self.tendance_constaté,
+            'raison_tendance': self.raison_tendance,
+            'parenttype': 'Prix et Marche',
+            'parentfield': 'relevé',
+        })
+        child.produit = child.get_product_name(self._create_produit)
+        return child

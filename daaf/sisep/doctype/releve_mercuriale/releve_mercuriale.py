@@ -6,7 +6,7 @@ from frappe.model.document import Document
 
 
 class ReleveMercuriale(Document):
-	def get_product_name(self) -> Document: #Product from daaf module
+	def get_product_name(self, _new = False) -> Document: #Product from daaf module
 		Settings = frappe.get_doc('GMS Recolteur')
 		query = frappe.db.sql(query="""
 		SELECT produit, ((LIKENAME + SUM(LIKETAG))/MAX(compare)), LIKENAME + SUM(LIKETAG) as LIKEFILTER, REX + SUM(REXTAG) as REXGEX, MAX(similarity)
@@ -46,6 +46,21 @@ class ReleveMercuriale(Document):
 		'likemin' : Settings.limite_sous_séquence_multiple,
 		
 		} ,as_list=1)
-  
-		if len(query) == 0 : return Settings.aucun_produit_trouvé
+		print(query)
+		if len(query) == 0 : 
+			if _new :
+				try :
+					_new_produit = frappe.new_doc('Produit')
+					_new_produit.nom = self.nom_affiché
+					_new_produit.insert(
+						ignore_permissions=True, # ignore write permissions during insert
+						# ignore_links=True, # ignore Link validation in the document
+						# ignore_if_duplicate=True, # dont insert if DuplicateEntryError is thrown
+						ignore_mandatory=True # insert even if mandatory fields are not set
+					)
+					return _new_produit.name
+				except Exception as e:
+					print(e)
+					self.log_error(message=f'Error while creating new produit {self.nom_affiché}')
+			return Settings.aucun_produit_trouvé
 		return query[0][0]

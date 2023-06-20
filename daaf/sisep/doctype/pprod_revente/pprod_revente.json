@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-06-20 08:08:57.720595",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "mode_de_vente",
+  "type_dacheteur",
+  "acheteur",
+  "volume_vendu",
+  "prix_de_vente"
+ ],
+ "fields": [
+  {
+   "fieldname": "mode_de_vente",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Mode de vente",
+   "options": "\nMarch\u00e9 de d\u00e9tail\nPersonne morale\nVente  en tourn\u00e9e, \u00e0 domicile\nVente directe sur l'exploitation\nVente en paniers/internet\nVente \u00e0 des petits commer\u00e7ants",
+   "reqd": 1
+  },
+  {
+   "fieldname": "type_dacheteur",
+   "fieldtype": "Select",
+   "label": "Type d'acheteur",
+   "options": "\nCollectivit\u00e9\nGMS\nBoucher\nVente restauration collective\nVente \u00e0 des restaurants\nOP\nGrossiste\nIAA\nRevendeur"
+  },
+  {
+   "fieldname": "acheteur",
+   "fieldtype": "Data",
+   "label": "Acheteur"
+  },
+  {
+   "fieldname": "volume_vendu",
+   "fieldtype": "Float",
+   "label": "Volume vendu"
+  },
+  {
+   "fieldname": "prix_de_vente",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Prix de vente",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-06-20 08:08:57.720595",
+ "modified_by": "Administrator",
+ "module": "Sisep",
+ "name": "PPROD revente",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -39,6 +39,7 @@
    "unique": 1
   },
   {
+   "default": "Autre",
    "fieldname": "type",
    "fieldtype": "Select",
    "label": "Type",
@@ -115,7 +116,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-15 14:10:55.827953",
+ "modified": "2023-06-17 00:14:25.465459",
  "modified_by": "Administrator",
  "module": "Daaf",
  "name": "Produit",

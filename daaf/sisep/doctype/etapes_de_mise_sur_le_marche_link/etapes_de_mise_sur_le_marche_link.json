@@ -1,0 +1,38 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-06-19 15:13:17.633396",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "nom",
+  "etapes_marche"
+ ],
+ "fields": [
+  {
+   "fieldname": "nom",
+   "fieldtype": "Data",
+   "label": "nom"
+  },
+  {
+   "fieldname": "etapes_marche",
+   "fieldtype": "Link",
+   "label": "Etapes Marche ",
+   "options": "Etapes Marche"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-06-19 15:25:09.939552",
+ "modified_by": "Administrator",
+ "module": "Sisep",
+ "name": "Etapes de mise sur le marche link",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

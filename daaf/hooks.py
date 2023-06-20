@@ -63,7 +63,7 @@ app_license = "MIT"
 # Installation
 # ------------
 
-# before_install = "daaf.install.before_install"
+before_install = "daaf.install.before_install"
 # after_install = "daaf.install.after_install"
 
 # Uninstallation

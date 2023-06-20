@@ -1,0 +1,41 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:nom",
+ "creation": "2023-06-16 15:55:03.825645",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "nom",
+  "tags"
+ ],
+ "fields": [
+  {
+   "fieldname": "tags",
+   "fieldtype": "Link",
+   "label": "tags",
+   "options": "Tag Unite"
+  },
+  {
+   "fieldname": "nom",
+   "fieldtype": "Data",
+   "label": "nom",
+   "unique": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-06-16 16:04:01.349057",
+ "modified_by": "Administrator",
+ "module": "Daaf",
+ "name": "Tag Unite link",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

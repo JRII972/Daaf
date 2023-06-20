@@ -1,6 +1,6 @@
 frappe.listview_settings['Prix et Marche'] = {
     // add fields to fetch
-    // add_fields: ['title', 'public'],
+    add_fields: ['statut', 'lieu'],
     // set default filters
     // filters: [
     //     ['public', '=', 1]
@@ -15,6 +15,28 @@ frappe.listview_settings['Prix et Marche'] = {
 				}
 			});
 		});
+
+        listview.page.add_button(__("Import Mercuriale"), function() {
+			frappe.call({
+				method:'daaf.sisep.doctype.importation_donnee_mercuriale.importation_donnee_mercuriale.checkRunningJob',
+				callback: function(r) {
+					if( r.message ){
+                        frappe.new_doc("Importation donnee Mercuriale");
+                    }
+
+				}
+			});
+            
+		});
+
+        frappe.realtime.on('gms_collecteur', (data) => {
+            console.log(data)
+            listview.refresh()
+            frappe.show_alert({
+                message:__('Hey, une collecte des GMS est prète'),
+                indicator:'green'
+            }, 5);
+        })
     },
     before_render() {
         // triggers before every render of list records
@@ -62,3 +84,4 @@ frappe.listview_settings['Prix et Marche'] = {
     //     }
     // }
 }
+

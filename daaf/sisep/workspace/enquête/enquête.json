@@ -1,0 +1,54 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"3UNYmsISw6\",\"type\":\"paragraph\",\"data\":{\"text\":\"Enqu\u00eate\",\"col\":12}},{\"id\":\"l6IZsrgEH6\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Prix et March\u00e9</b></span>\",\"col\":4}},{\"id\":\"yrqr_o_7tc\",\"type\":\"spacer\",\"data\":{\"col\":4}},{\"id\":\"qDwKRWpiBh\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Prix et Production</b></span>\",\"col\":4}},{\"id\":\"MghowIFSkM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Nouveau relev\u00e9\",\"col\":4}},{\"id\":\"a8HeOKrczv\",\"type\":\"spacer\",\"data\":{\"col\":4}},{\"id\":\"hEd8QUTH0b\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Nouveau relev\u00e9\",\"col\":4}},{\"id\":\"q-qupi9D4P\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Mes relev\u00e9s\",\"col\":4}},{\"id\":\"UBC_VMn-Us\",\"type\":\"spacer\",\"data\":{\"col\":4}},{\"id\":\"h2qqAyvDBb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Mes relev\u00e9s\",\"col\":4}},{\"id\":\"fIvLkKOLBn\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Prix et Marche Non valider\",\"col\":4}},{\"id\":\"IAbBDN4gSb\",\"type\":\"spacer\",\"data\":{\"col\":4}},{\"id\":\"EHMiLsL1sE\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"PPROD Non valider\",\"col\":4}}]",
+ "creation": "2023-06-19 00:13:35.411909",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "file",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Enqu\u00eate",
+ "links": [],
+ "modified": "2023-06-19 09:02:17.027362",
+ "modified_by": "Administrator",
+ "module": "Sisep",
+ "name": "Enqu\u00eate",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [
+  {
+   "document_type": "Prix et Marche",
+   "label": "Prix et Marche Non valider",
+   "quick_list_filter": "{\"docstatus\":[\"=\",\"0\"]}"
+  },
+  {
+   "document_type": "Prix et production",
+   "label": "PPROD Non valider",
+   "quick_list_filter": "{\"docstatus\":[\"=\",\"0\"]}"
+  }
+ ],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [
+  {
+   "color": "Cyan",
+   "doc_view": "New",
+   "label": "Nouveau relev\u00e9",
+   "link_to": "Prix et Marche",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Mes relev\u00e9s",
+   "link_to": "Prix et Marche",
+   "type": "DocType"
+  }
+ ],
+ "title": "Enqu\u00eate"
+}

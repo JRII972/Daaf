@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestPrixetproduction(FrappeTestCase):
+class TestTagUnite(FrappeTestCase):
 	pass

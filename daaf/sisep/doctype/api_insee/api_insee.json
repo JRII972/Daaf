@@ -1,0 +1,76 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-06-20 14:02:46.912524",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "token",
+  "expire_time",
+  "insee_consumer_key",
+  "insee_consumer_secret",
+  "url"
+ ],
+ "fields": [
+  {
+   "fieldname": "token",
+   "fieldtype": "Small Text",
+   "label": "TOKEN",
+   "read_only": 1
+  },
+  {
+   "fieldname": "expire_time",
+   "fieldtype": "Datetime",
+   "label": "EXPIRE_TIME",
+   "read_only": 1
+  },
+  {
+   "fieldname": "insee_consumer_key",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "INSEE_CONSUMER_KEY",
+   "reqd": 1
+  },
+  {
+   "fieldname": "insee_consumer_secret",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "INSEE_CONSUMER_SECRET",
+   "reqd": 1
+  },
+  {
+   "default": "https://api.insee.fr/token",
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "URL",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2023-06-20 14:05:03.834603",
+ "modified_by": "Administrator",
+ "module": "Sisep",
+ "name": "API INSEE",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_views": 1
+}

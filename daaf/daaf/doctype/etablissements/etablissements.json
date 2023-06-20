@@ -1,0 +1,350 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-06-20 14:58:52.137851",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "siren",
+  "siret",
+  "nic",
+  "date_creation_etablissement",
+  "tranche_effectifs_etablissement",
+  "annee_effectifs_etablissement",
+  "activite_principale_registre_metiers_etablissement",
+  "etablissement_siege",
+  "date_creation_unite_legale",
+  "sigle_unite_legale",
+  "sexe_unite_legale",
+  "prenom_1_unite_legale",
+  "prenom_2_unite_legale",
+  "prenom_3_unite_legale",
+  "prenom_4_unite_legale",
+  "prenom_usuel_unite_legale",
+  "pseudonyme_unite_legale",
+  "identifiant_association_unite_legale",
+  "tranche_effectifs_unite_legale",
+  "annee_effectifs_unite_legale",
+  "categorie_entreprise",
+  "annee_categorie_entreprise",
+  "etat_administratif_unite_legale",
+  "nom_unite_legale",
+  "denomination_unite_legale",
+  "denomination_usuelle_1_unite_legale",
+  "denomination_usuelle_2_unite_legale",
+  "denomination_usuelle_3_unite_legale",
+  "activite_principale_unite_legale",
+  "categorie_juridique_unite_legale",
+  "nic_siege_unite_legale",
+  "nomenclature_activite_principale_unite_legale",
+  "nom_usage_unite_legale",
+  "economie_sociale_solidaire_unite_legale",
+  "societe_mission_unite_legale",
+  "caractere_employeur_unite_legale",
+  "complement_adresse_etablissement",
+  "numero_voie_etablissement",
+  "type_voie_etablissement",
+  "libelle_voie_etablissement",
+  "code_postal_etablissement",
+  "libelle_commune_etablissement",
+  "date_fin",
+  "date_debut",
+  "etat_administratif_etablissement",
+  "enseigne_1_etablissement",
+  "enseigne_2_etablissement",
+  "enseigne_3_etablissement",
+  "denomination_usuelle_etablissement",
+  "activite_principale_etablissement",
+  "nomenclature_activite_principale_etablissement",
+  "caractere_employeur_etablissement"
+ ],
+ "fields": [
+  {
+   "fieldname": "siren",
+   "fieldtype": "Data",
+   "label": "Siren"
+  },
+  {
+   "fieldname": "siret",
+   "fieldtype": "Data",
+   "label": "Siret"
+  },
+  {
+   "fieldname": "nic",
+   "fieldtype": "Data",
+   "label": "NIC"
+  },
+  {
+   "fieldname": "date_creation_etablissement",
+   "fieldtype": "Date",
+   "label": "Date Creation Etablissement"
+  },
+  {
+   "fieldname": "tranche_effectifs_etablissement",
+   "fieldtype": "Data",
+   "label": "tranche Effectifs Etablissement"
+  },
+  {
+   "fieldname": "annee_effectifs_etablissement",
+   "fieldtype": "Date",
+   "label": "annee Effectifs Etablissement"
+  },
+  {
+   "fieldname": "activite_principale_registre_metiers_etablissement",
+   "fieldtype": "Data",
+   "label": "activite Principale Registre Metiers Etablissement"
+  },
+  {
+   "fieldname": "etablissement_siege",
+   "fieldtype": "Data",
+   "label": "etablissement Siege"
+  },
+  {
+   "fieldname": "date_creation_unite_legale",
+   "fieldtype": "Date",
+   "label": "date Creation Unite Legale"
+  },
+  {
+   "fieldname": "sigle_unite_legale",
+   "fieldtype": "Data",
+   "label": "sigle Unite Legale"
+  },
+  {
+   "fieldname": "sexe_unite_legale",
+   "fieldtype": "Data",
+   "label": "sexe Unite Legale"
+  },
+  {
+   "fieldname": "prenom_1_unite_legale",
+   "fieldtype": "Data",
+   "label": "prenom 1 Unite Legale"
+  },
+  {
+   "fieldname": "prenom_2_unite_legale",
+   "fieldtype": "Data",
+   "label": "prenom 2 Unite Legale"
+  },
+  {
+   "fieldname": "prenom_3_unite_legale",
+   "fieldtype": "Data",
+   "label": " prenom 3 Unite Legale"
+  },
+  {
+   "fieldname": "prenom_4_unite_legale",
+   "fieldtype": "Data",
+   "label": " prenom 4 Unite Legale"
+  },
+  {
+   "fieldname": "prenom_usuel_unite_legale",
+   "fieldtype": "Data",
+   "label": "prenom Usuel Unite Legale"
+  },
+  {
+   "fieldname": "pseudonyme_unite_legale",
+   "fieldtype": "Data",
+   "label": "pseudonyme Unite Legale"
+  },
+  {
+   "fieldname": "identifiant_association_unite_legale",
+   "fieldtype": "Data",
+   "label": "identifiant Association Unite Legale"
+  },
+  {
+   "fieldname": "tranche_effectifs_unite_legale",
+   "fieldtype": "Data",
+   "label": "tranche Effectifs Unite Legale"
+  },
+  {
+   "fieldname": "annee_effectifs_unite_legale",
+   "fieldtype": "Date",
+   "label": "annee Effectifs Unite Legale"
+  },
+  {
+   "fieldname": "categorie_entreprise",
+   "fieldtype": "Data",
+   "label": "categorie Entreprise"
+  },
+  {
+   "fieldname": "annee_categorie_entreprise",
+   "fieldtype": "Date",
+   "label": "annee Categorie Entreprise"
+  },
+  {
+   "fieldname": "etat_administratif_unite_legale",
+   "fieldtype": "Data",
+   "label": "etat Administratif Unite Legale"
+  },
+  {
+   "fieldname": "nom_unite_legale",
+   "fieldtype": "Data",
+   "label": "nom Unite Legale"
+  },
+  {
+   "fieldname": "denomination_unite_legale",
+   "fieldtype": "Data",
+   "label": "denomination Unite Legale"
+  },
+  {
+   "fieldname": "denomination_usuelle_1_unite_legale",
+   "fieldtype": "Data",
+   "label": "denomination Usuelle 1 Unite Legale"
+  },
+  {
+   "fieldname": "denomination_usuelle_2_unite_legale",
+   "fieldtype": "Data",
+   "label": "denomination Usuelle 2 Unite Legale"
+  },
+  {
+   "fieldname": "denomination_usuelle_3_unite_legale",
+   "fieldtype": "Data",
+   "label": "denomination Usuelle 3 Unite Legale"
+  },
+  {
+   "fieldname": "activite_principale_unite_legale",
+   "fieldtype": "Data",
+   "label": "activite Principale Unite Legale"
+  },
+  {
+   "fieldname": "categorie_juridique_unite_legale",
+   "fieldtype": "Data",
+   "label": "categorie Juridique Unite Legale"
+  },
+  {
+   "fieldname": "nic_siege_unite_legale",
+   "fieldtype": "Data",
+   "label": "nic Siege Unite Legale"
+  },
+  {
+   "fieldname": "nomenclature_activite_principale_unite_legale",
+   "fieldtype": "Data",
+   "label": "nomenclature Activite Principale Unite Legale"
+  },
+  {
+   "fieldname": "nom_usage_unite_legale",
+   "fieldtype": "Data",
+   "label": "nom Usage Unite Legale"
+  },
+  {
+   "fieldname": "economie_sociale_solidaire_unite_legale",
+   "fieldtype": "Data",
+   "label": "economie Sociale Solidaire Unite Legale"
+  },
+  {
+   "fieldname": "societe_mission_unite_legale",
+   "fieldtype": "Data",
+   "label": "societe Mission Unite Legale"
+  },
+  {
+   "fieldname": "caractere_employeur_unite_legale",
+   "fieldtype": "Data",
+   "label": "caractere Employeur Unite Legale"
+  },
+  {
+   "fieldname": "complement_adresse_etablissement",
+   "fieldtype": "Data",
+   "label": "complement Adresse Etablissement"
+  },
+  {
+   "fieldname": "numero_voie_etablissement",
+   "fieldtype": "Data",
+   "label": "numero Voie Etablissement"
+  },
+  {
+   "fieldname": "type_voie_etablissement",
+   "fieldtype": "Data",
+   "label": "type Voie Etablissement"
+  },
+  {
+   "fieldname": "libelle_voie_etablissement",
+   "fieldtype": "Data",
+   "label": "libelle Voie Etablissement"
+  },
+  {
+   "fieldname": "code_postal_etablissement",
+   "fieldtype": "Data",
+   "label": "code Postal Etablissement"
+  },
+  {
+   "fieldname": "libelle_commune_etablissement",
+   "fieldtype": "Data",
+   "label": "libelle Commune Etablissement"
+  },
+  {
+   "fieldname": "date_fin",
+   "fieldtype": "Date",
+   "label": "date Fin"
+  },
+  {
+   "fieldname": "date_debut",
+   "fieldtype": "Date",
+   "label": "date Debut"
+  },
+  {
+   "fieldname": "etat_administratif_etablissement",
+   "fieldtype": "Data",
+   "label": "etat Administratif Etablissement"
+  },
+  {
+   "fieldname": "enseigne_1_etablissement",
+   "fieldtype": "Data",
+   "label": "enseigne 1 Etablissement"
+  },
+  {
+   "fieldname": "enseigne_2_etablissement",
+   "fieldtype": "Data",
+   "label": "enseigne 2 Etablissement"
+  },
+  {
+   "fieldname": "enseigne_3_etablissement",
+   "fieldtype": "Data",
+   "label": "enseigne 3 Etablissement"
+  },
+  {
+   "fieldname": "denomination_usuelle_etablissement",
+   "fieldtype": "Data",
+   "label": "denomination Usuelle Etablissement"
+  },
+  {
+   "fieldname": "activite_principale_etablissement",
+   "fieldtype": "Data",
+   "label": "activite Principale Etablissement"
+  },
+  {
+   "fieldname": "nomenclature_activite_principale_etablissement",
+   "fieldtype": "Data",
+   "label": "nomenclature Activite Principale Etablissement"
+  },
+  {
+   "fieldname": "caractere_employeur_etablissement",
+   "fieldtype": "Data",
+   "label": "caractere Employeur Etablissement"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-06-20 14:58:52.137851",
+ "modified_by": "Administrator",
+ "module": "Daaf",
+ "name": "Etablissements",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

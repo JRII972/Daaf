@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class Prixetproduction(Document):
+class TagUnitelink(Document):
 	pass

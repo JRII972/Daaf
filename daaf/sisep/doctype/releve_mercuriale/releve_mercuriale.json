@@ -1,11 +1,12 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "hash",
  "creation": "2023-04-13 17:02:26.316047",
  "doctype": "DocType",
- "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
+  "information_sur_le_produit_section",
   "produit",
   "nom_affich\u00e9",
   "image_hxek",
@@ -15,25 +16,45 @@
   "lieu",
   "lien_du_produit",
   "image",
+  "information_sur_le_vendeur_section",
+  "vendeur",
+  "column_break_mjic",
+  "type_de_vendeur",
+  "column_break_pcqt",
+  "etapes_de_mise_sur_le_march\u00e9",
   "section_break_zeds",
   "prix_vente",
   "prix_de_r\u00e9f\u00e9rence",
-  "prevent_validation",
-  "prevent_check",
-  "prevent_calculation",
+  "hve",
+  "organique",
+  "biologique",
+  "conventionnel",
   "column_break_20ge",
   "poids_de_l_unit\u00e9_de_vente",
   "poids_de_r\u00e9f\u00e9rence",
   "quantit\u00e9_sur_l_\u00e9tale",
-  "bio",
   "nutriscore",
+  "op",
   "column_break_nmu7",
   "unit\u00e9_de_vente",
   "unit\u00e9_de_r\u00e9f\u00e9rence",
-  "commentaire"
+  "commentaire",
+  "tendance_constat\u00e9_section",
+  "tendance_constat\u00e9",
+  "column_break_udph",
+  "raison_tendance",
+  "section_break_rysf",
+  "warning",
+  "prevent_calculation",
+  "prevent_validation",
+  "column_break_imqo",
+  "legacy_import",
+  "prevent_check"
  ],
  "fields": [
   {
+   "allow_in_quick_entry": 1,
+   "bold": 1,
    "fieldname": "produit",
    "fieldtype": "Link",
    "in_filter": 1,
@@ -70,15 +91,15 @@
   },
   {
    "fieldname": "section_break_zeds",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Information sur la tarification et qualit\u00e9"
   },
   {
-   "depends_on": "eval:true",
+   "depends_on": "eval:false",
    "fieldname": "lieu",
    "fieldtype": "Link",
    "label": "Lieu",
    "options": "Lieux Mercuriale",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -88,9 +109,11 @@
   },
   {
    "default": "0",
+   "depends_on": "eval: doc.prevent_validation == true",
    "fieldname": "prevent_validation",
    "fieldtype": "Check",
-   "label": "Prevent Validation"
+   "label": "Prevent Validation",
+   "read_only": 1
   },
   {
    "fieldname": "poids_de_l_unit\u00e9_de_vente",
@@ -103,7 +126,6 @@
    "fieldname": "poids_de_r\u00e9f\u00e9rence",
    "fieldtype": "Float",
    "label": "Poids de R\u00e9f\u00e9rence",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -112,7 +134,6 @@
    "fieldname": "prix_de_r\u00e9f\u00e9rence",
    "fieldtype": "Currency",
    "label": "Prix de r\u00e9f\u00e9rence",
-   "read_only": 1,
    "reqd": 1
   },
   {
@@ -132,14 +153,15 @@
    "fieldtype": "Link",
    "label": "Unit\u00e9 de R\u00e9f\u00e9rence",
    "options": "Unite",
-   "read_only": 1,
    "reqd": 1
   },
   {
    "default": "0",
+   "depends_on": "eval: doc.prevent_calculation == true",
    "fieldname": "prevent_calculation",
    "fieldtype": "Check",
-   "label": "Prevent Calculation"
+   "label": "Prevent Calculation",
+   "read_only": 1
   },
   {
    "fieldname": "nutriscore",
@@ -154,20 +176,17 @@
    "read_only": 1
   },
   {
-   "fieldname": "bio",
-   "fieldtype": "Data",
-   "label": "Bio"
-  },
-  {
    "fieldname": "origine",
    "fieldtype": "Data",
    "label": "Origine"
   },
   {
    "default": "0",
+   "depends_on": "eval: doc.prevent_check == true",
    "fieldname": "prevent_check",
    "fieldtype": "Check",
-   "label": "Prevent Check"
+   "label": "Prevent Check",
+   "read_only": 1
   },
   {
    "depends_on": "eval:doc.image != ''",
@@ -184,16 +203,131 @@
   {
    "fieldname": "lien_du_produit",
    "fieldtype": "Small Text",
-   "label": "Lien du produit"
+   "label": "Lien du produit",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.legacy_import == true",
+   "fieldname": "legacy_import",
+   "fieldtype": "Check",
+   "label": "Legacy import",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.warning == true",
+   "fieldname": "warning",
+   "fieldtype": "Check",
+   "label": "warning",
+   "read_only": 1
+  },
+  {
+   "fieldname": "tendance_constat\u00e9",
+   "fieldtype": "Select",
+   "label": "Tendance constat\u00e9 ",
+   "options": "\nQuantit\u00e9 livr\u00e9e plus importante\nQuantit\u00e9 constate\nQuantit\u00e9 livr\u00e9e moins importante"
+  },
+  {
+   "fieldname": "vendeur",
+   "fieldtype": "Link",
+   "label": "Vendeur",
+   "options": "Exploitation"
+  },
+  {
+   "fieldname": "type_de_vendeur",
+   "fieldtype": "Select",
+   "label": "Type de vendeur",
+   "options": "\nRevendeur\nProducteur\nGMS\nAutre"
+  },
+  {
+   "default": "0",
+   "description": "Haute valeur environnementale",
+   "fieldname": "hve",
+   "fieldtype": "Check",
+   "label": "HVE"
+  },
+  {
+   "default": "0",
+   "fieldname": "conventionnel",
+   "fieldtype": "Check",
+   "label": "Conventionnel"
+  },
+  {
+   "default": "0",
+   "fieldname": "organique",
+   "fieldtype": "Check",
+   "label": "Organique"
+  },
+  {
+   "fieldname": "raison_tendance",
+   "fieldtype": "Select",
+   "label": "Raison tendance",
+   "options": "\nAugmentation de la production\nDemande plus importante du march\u00e9\nAugmentation du nombre de producteur\nCondition climatiques favorables\nChoix strat\u00e9gique de l'OP\nBaisse de production\nDiminution de la demande du march\u00e9\nDiminution du nombre de producteurs\nConditions climatiques d\u00e9favorable"
+  },
+  {
+   "fieldname": "etapes_de_mise_sur_le_march\u00e9",
+   "fieldtype": "Select",
+   "label": "Etapes de mise sur le march\u00e9",
+   "options": "\nVente directe\n1\u00e8re revente\n2\u00e8me revente et plus",
+   "reqd": 1
+  },
+  {
+   "fieldname": "information_sur_le_produit_section",
+   "fieldtype": "Section Break",
+   "label": "Information sur le produit"
+  },
+  {
+   "fieldname": "information_sur_le_vendeur_section",
+   "fieldtype": "Section Break",
+   "label": "Information sur le vendeur"
+  },
+  {
+   "fieldname": "column_break_mjic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pcqt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tendance_constat\u00e9_section",
+   "fieldtype": "Section Break",
+   "label": "Tendance constat\u00e9"
+  },
+  {
+   "fieldname": "column_break_udph",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_rysf",
+   "fieldtype": "Section Break",
+   "label": "Gestion"
+  },
+  {
+   "fieldname": "column_break_imqo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "biologique",
+   "fieldtype": "Check",
+   "label": "Biologique"
+  },
+  {
+   "fieldname": "op",
+   "fieldtype": "Data",
+   "label": "OP"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-06-14 16:39:05.885881",
+ "modified": "2023-06-19 15:01:11.597682",
  "modified_by": "Administrator",
  "module": "Sisep",
  "name": "Releve Mercuriale",
+ "naming_rule": "Random",
  "owner": "Administrator",
  "permissions": [],
  "sort_field": "modified",

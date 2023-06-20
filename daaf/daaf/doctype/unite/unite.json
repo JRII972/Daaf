@@ -12,7 +12,8 @@
   "symbole",
   "coef",
   "unit_ref",
-  "unitaire"
+  "unitaire",
+  "tags"
  ],
  "fields": [
   {
@@ -46,11 +47,16 @@
    "fieldname": "unitaire",
    "fieldtype": "Check",
    "label": "Unitaire"
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Small Text",
+   "label": "Tags"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-15 11:00:06.587943",
+ "modified": "2023-06-16 16:20:27.519965",
  "modified_by": "Administrator",
  "module": "Daaf",
  "name": "Unite",

@@ -1,15 +1,17 @@
 
 import os
 import zipfile
-
+import frappe
 from .settings import Settings
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-
+from frappe.query_builder import DocType
+from frappe.query_builder.functions import Count
 # Configuration de chrome Driver voir documentation
-
+import frappe 
+logger = frappe.logger("sisep", allow_site=True, file_count=50)
 manifest_json = """
 {
     "version": "1.0.0",
@@ -91,6 +93,7 @@ def get_driver(use_proxy=False, user_agent=None):
 
 
 def highlight(element, effect_time, color, border):
+    import time
     """Highlights (blinks) a Selenium Webdriver element"""
     driver = element._parent
 
@@ -103,3 +106,38 @@ def highlight(element, effect_time, color, border):
     actions.move_to_element(element).perform()
     time.sleep(effect_time)
     apply_style(original_style)
+
+def detectUnite(name: str):
+    try :
+        Unités = frappe.get_all('Unite', 
+        fields = ['name', 'tags', 'symbole'],
+        limit_page_length = (
+            frappe.qb.from_(DocType("Unite")) \
+                .select( Count('*').as_("count"))
+            ).run()[0][0]
+        )
+
+        for unite in Unités :
+            if (name == unite['name']) | (name == unite['symbole']) : return unite['name']
+            if unite['tags'] != None : 
+                if name in unite['tags'].split(';') : return unite['name']
+                print(unite['tags'].split(';') )
+            
+        try :
+            if Settings.crée_unité_inexistence :
+                _new_unite = frappe.new_doc('Unite', name)
+                _new_unite.symbole = frappe.utils.get_abbr(name, max_len=3)  #TODO: Auto symbole
+                _new_unite.coef = 1
+                _new_unite.unitaire = 1
+                _new_unite.insert(
+                    ignore_permissions=True, # ignore write permissions during insert
+                    )
+                frappe.db.commit()
+                return name
+        except : 
+            logger.error('Erreur lors de la création de l\'unite')
+            
+    except : 
+        logger.error('Erreur lors de la création de l\'unite - lvl1')
+        
+    return Settings.unité_par_défaut

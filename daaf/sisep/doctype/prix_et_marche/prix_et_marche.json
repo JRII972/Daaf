@@ -3,7 +3,6 @@
  "allow_copy": 1,
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "format:{DD/{MM} {lieu} {rayon}",
  "creation": "2023-04-13 17:03:00.104924",
  "default_view": "List",
  "doctype": "DocType",
@@ -18,7 +17,8 @@
   "relev\u00e9",
   "amended_from",
   "prevent_validation",
-  "error_msg"
+  "error_msg",
+  "importation"
  ],
  "fields": [
   {
@@ -32,6 +32,7 @@
    "fieldname": "lieu",
    "fieldtype": "Link",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Lieu",
    "options": "Lieux Mercuriale",
    "reqd": 1
@@ -66,12 +67,14 @@
    "fieldname": "prevent_validation",
    "fieldtype": "Check",
    "label": "Prevent validation",
+   "permlevel": 1,
    "read_only": 1
   },
   {
    "fieldname": "error_msg",
    "fieldtype": "Small Text",
    "label": "Error msg",
+   "permlevel": 1,
    "read_only": 1
   },
   {
@@ -79,23 +82,29 @@
    "fieldtype": "Data",
    "label": "Rayon",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "importation",
+   "fieldtype": "Check",
+   "label": "Importation",
+   "permlevel": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-06-15 15:39:51.516909",
+ "modified": "2023-06-19 00:45:54.811691",
  "modified_by": "Administrator",
  "module": "Sisep",
  "name": "Prix et Marche",
- "naming_rule": "Expression",
+ "naming_rule": "By script",
  "owner": "Administrator",
  "permissions": [
   {
    "amend": 1,
    "cancel": 1,
    "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "import": 1,
@@ -106,6 +115,19 @@
    "select": 1,
    "share": 1,
    "submit": 1,
+   "write": 1
+  },
+  {
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
    "write": 1
   }
  ],

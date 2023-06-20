@@ -38,6 +38,17 @@ function loadMercuriale(frm) {
     })
 }
 
+function loadPreformatCommentaire(frm){
+    frappe.call('daaf.sisep.doctype.commentaire_mercuriale.commentaire_mercuriale.GenerateCommentaire', {
+        'date'   : frm.doc.date,
+        'lieu'   : frm.doc.lieu,
+    }).then(r => {
+        console.log(r.message)
+        frm.doc.commentaire = r.message
+        frm.refresh_field('commentaire')
+    })
+}
+
 frappe.ui.form.on("Commentaire Mercuriale", {
     before_load(frm) {
         
@@ -53,6 +64,9 @@ frappe.ui.form.on("Commentaire Mercuriale", {
 
         frm.add_custom_button('Charger la mercuriale', () => {
             loadMercuriale(frm)
+        })
+        frm.add_custom_button('Généré Commentaire', () => {
+            loadPreformatCommentaire(frm)
         })
     },
 	refresh(frm) {

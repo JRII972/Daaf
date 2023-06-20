@@ -1,0 +1,69 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-04-13 17:28:10.282399",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enqu\u00eateur",
+  "d\u00e9but_de_laffectation",
+  "date_fin_affectation",
+  "affectation"
+ ],
+ "fields": [
+  {
+   "fieldname": "enqu\u00eateur",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Enqu\u00eateur",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "d\u00e9but_de_laffectation",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "D\u00e9but de l'affectation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_fin_affectation",
+   "fieldtype": "Date",
+   "label": "Date fin affectation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "affectation",
+   "fieldtype": "Table",
+   "label": "Affectation",
+   "options": "Affectation PPROD contact",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-06-20 13:12:34.937006",
+ "modified_by": "Administrator",
+ "module": "Sisep",
+ "name": "Affectation Prix et production",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

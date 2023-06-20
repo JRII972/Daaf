@@ -2,48 +2,38 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "autoname": "format:SYNOP-{nom}-{date}",
+ "autoname": "format:SYNOP_{date}_{communes_name}",
  "creation": "2023-05-24 09:47:27.867261",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "id_omm_station",
   "date",
   "pression_au_niveau_mer",
   "variation_de_pression_en_3_heures",
   "direction_du_vent_moyen_10_mn",
   "vitesse_du_vent_moyen_10_mn",
-  "temp\u00e9rature",
   "point_de_ros\u00e9e",
   "humidit\u00e9",
-  "temp\u00e9rature_minimale_sur_12_heures",
-  "temp\u00e9rature_minimale_sur_24_heures",
-  "temp\u00e9rature_maximale_sur_12_heures",
-  "temp\u00e9rature_maximale_sur_24_heures",
-  "temp\u00e9rature_c",
-  "temp\u00e9rature_minimale_12_heures_c",
-  "temp\u00e9rature_minimale_24_heures_c",
-  "temp\u00e9rature_maximale_12_c",
-  "temp\u00e9rature_maximale_24_c",
-  "temperature_minimale_du_sol_sur_12_heures_c",
+  "temp\u00e9rature",
   "communes_name",
-  "epci_name",
+  "nom_epci",
   "department_name",
   "region_name",
   "mois_de_l_annee",
   "type_de_tendance_barom\u00e9trique",
   "temps_pass\u00e9_1",
   "temps_pr\u00e9sent",
-  "nom"
+  "temperature_minimale_du_sol_sur_12_heures",
+  "pr\u00e9cipitations_dans_les_3_derni\u00e8res_heures",
+  "pr\u00e9cipitations_dans_les_6_derni\u00e8res_heures",
+  "pr\u00e9cipitations_dans_les_12_derni\u00e8res_heures",
+  "coordonnees",
+  "latitude",
+  "longitude"
  ],
  "fields": [
-  {
-   "fieldname": "id_omm_station",
-   "fieldtype": "Int",
-   "label": "ID OMM station"
-  },
   {
    "fieldname": "date",
    "fieldtype": "Datetime",
@@ -72,7 +62,7 @@
   {
    "fieldname": "temp\u00e9rature",
    "fieldtype": "Float",
-   "label": "Temp\u00e9rature"
+   "label": "Temp\u00e9rature (\u00b0C)"
   },
   {
    "fieldname": "point_de_ros\u00e9e",
@@ -85,59 +75,9 @@
    "label": "Humidit\u00e9"
   },
   {
-   "fieldname": "temp\u00e9rature_minimale_sur_12_heures",
-   "fieldtype": "Float",
-   "label": "Temp\u00e9rature minimale sur 12 heures"
-  },
-  {
-   "fieldname": "temp\u00e9rature_minimale_sur_24_heures",
-   "fieldtype": "Float",
-   "label": "Temp\u00e9rature minimale sur 24 heures"
-  },
-  {
-   "fieldname": "temp\u00e9rature_maximale_sur_12_heures",
-   "fieldtype": "Float",
-   "label": "Temp\u00e9rature maximale sur 12 heures"
-  },
-  {
-   "fieldname": "temp\u00e9rature_maximale_sur_24_heures",
-   "fieldtype": "Float",
-   "label": "Temp\u00e9rature maximale sur 24 heures"
-  },
-  {
-   "fieldname": "temp\u00e9rature_c",
-   "fieldtype": "Float",
-   "label": "Temp\u00e9rature (\u00b0C)"
-  },
-  {
-   "fieldname": "temp\u00e9rature_minimale_12_heures_c",
-   "fieldtype": "Float",
-   "label": "Temp\u00e9rature minimale sur 12 heures (\u00b0C)"
-  },
-  {
-   "fieldname": "temp\u00e9rature_minimale_24_heures_c",
-   "fieldtype": "Float",
-   "label": "Temp\u00e9rature minimale sur 24 heures (\u00b0C)"
-  },
-  {
-   "fieldname": "temp\u00e9rature_maximale_12_c",
-   "fieldtype": "Float",
-   "label": "Temp\u00e9rature maximale sur 12 heures (\u00b0C)"
-  },
-  {
-   "fieldname": "temp\u00e9rature_maximale_24_c",
-   "fieldtype": "Float",
-   "label": "Temp\u00e9rature maximale sur 24 heures (\u00b0C)"
-  },
-  {
    "fieldname": "communes_name",
    "fieldtype": "Data",
    "label": "communes (name)"
-  },
-  {
-   "fieldname": "epci_name",
-   "fieldtype": "Data",
-   "label": "EPCI (name)"
   },
   {
    "fieldname": "department_name",
@@ -170,19 +110,49 @@
    "label": "Temps pr\u00e9sent"
   },
   {
-   "fieldname": "nom",
+   "fieldname": "temperature_minimale_du_sol_sur_12_heures",
    "fieldtype": "Data",
-   "label": "Nom"
+   "label": "Temperature minimale du sol sur 12 heures"
   },
   {
-   "fieldname": "temperature_minimale_du_sol_sur_12_heures_c",
+   "fieldname": "pr\u00e9cipitations_dans_les_3_derni\u00e8res_heures",
    "fieldtype": "Float",
-   "label": "Temp\u00e9rature minimale du sol sur 12 heures (en \u00b0C)"
+   "label": "Pr\u00e9cipitations dans les 3 derni\u00e8res heures"
+  },
+  {
+   "fieldname": "pr\u00e9cipitations_dans_les_6_derni\u00e8res_heures",
+   "fieldtype": "Float",
+   "label": "Pr\u00e9cipitations dans les 6 derni\u00e8res heures"
+  },
+  {
+   "fieldname": "pr\u00e9cipitations_dans_les_12_derni\u00e8res_heures",
+   "fieldtype": "Float",
+   "label": "Pr\u00e9cipitations dans les 12 derni\u00e8res heures"
+  },
+  {
+   "fieldname": "nom_epci",
+   "fieldtype": "Data",
+   "label": "EPCI (name)"
+  },
+  {
+   "fieldname": "coordonnees",
+   "fieldtype": "Data",
+   "label": "coordonnees"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-05-24 11:02:52.824491",
+ "modified": "2023-06-18 21:58:20.287126",
  "modified_by": "Administrator",
  "module": "Daaf",
  "name": "Observation meteorologique historiques France SYNOP",

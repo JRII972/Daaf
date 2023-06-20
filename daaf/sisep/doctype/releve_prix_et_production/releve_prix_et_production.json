@@ -1,91 +1,332 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:PPROD-{MM}-{Produit}-{####}",
- "creation": "2023-04-13 17:27:45.083348",
+ "autoname": "hash",
+ "creation": "2023-06-19 15:06:11.164823",
  "default_view": "List",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "information_sur_le_produit_section",
+  "column_break_n4a6",
+  "producteur",
+  "type_de_vendeur",
+  "mode_de_production",
+  "pr\u00e9ciser",
+  "description_du_produit_column",
   "produit",
-  "surface",
-  "column_break_9mhy",
-  "ville",
-  "production_section",
-  "mode_prod",
-  "valeur",
-  "column_break_tfbt",
-  "volume",
-  "unite"
+  "origine",
+  "image",
+  "image_hxek",
+  "information_sur_le_relev\u00e9_column",
+  "date",
+  "d\u00e9but_de_la_production",
+  "fin_de_la_production",
+  "information_sur_le_vendeur_section",
+  "column_break_cbjo",
+  "superficie_plant\u00e9e",
+  "superficie_r\u00e9colter",
+  "column_break_mlgs",
+  "volume_de_la_production",
+  "volume_perdu",
+  "valorisation_des_pertes_section",
+  "valorisation_des_pertes",
+  "raison_des_pertes",
+  "column_break_nsgb",
+  "description",
+  "tendance_constat\u00e9_section",
+  "tendance_constat\u00e9",
+  "column_break_udph",
+  "raison_tendance",
+  "revente_1_section",
+  "revente",
+  "section_break_rysf",
+  "warning",
+  "prevent_calculation",
+  "prevent_validation",
+  "column_break_imqo",
+  "legacy_import",
+  "prevent_check",
+  "amended_from"
  ],
  "fields": [
   {
+   "fieldname": "information_sur_le_produit_section",
+   "fieldtype": "Section Break",
+   "label": "Information g\u00e9n\u00e9rale"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "bold": 1,
    "fieldname": "produit",
    "fieldtype": "Link",
+   "in_filter": 1,
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Produit",
    "options": "Produit",
    "reqd": 1
   },
   {
-   "fieldname": "surface",
-   "fieldtype": "Float",
-   "in_list_view": 1,
-   "label": "Surface",
+   "depends_on": "eval:(doc.image != '') && (doc.image != undefined)",
+   "fieldname": "image_hxek",
+   "fieldtype": "Image",
+   "options": "image",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_n4a6",
+   "fieldtype": "Column Break",
+   "label": "Exploitation et l'exploitant"
+  },
+  {
+   "depends_on": "eval:true",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date du relev\u00e9",
    "reqd": 1
   },
   {
-   "fieldname": "ville",
+   "fieldname": "origine",
    "fieldtype": "Data",
-   "label": "Ville"
+   "label": "Pays d'origine"
   },
   {
-   "fieldname": "production_section",
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  },
+  {
+   "fieldname": "information_sur_le_vendeur_section",
    "fieldtype": "Section Break",
-   "label": "Production"
+   "label": "Information sur la production"
   },
   {
-   "fieldname": "mode_prod",
+   "fieldname": "type_de_vendeur",
    "fieldtype": "Data",
-   "label": "Mode de production",
-   "options": "Mode de production"
+   "label": "Type de producteur"
   },
   {
-   "fieldname": "volume",
-   "fieldtype": "Float",
-   "label": "Volume"
+   "fieldname": "tendance_constat\u00e9_section",
+   "fieldtype": "Section Break",
+   "label": "Tendance constat\u00e9"
   },
   {
-   "fieldname": "unite",
+   "fieldname": "tendance_constat\u00e9",
+   "fieldtype": "Select",
+   "label": "Tendance constat\u00e9 ",
+   "options": "\nQuantit\u00e9 livr\u00e9e plus importante\nQuantit\u00e9 constate\nQuantit\u00e9 livr\u00e9e moins importante"
+  },
+  {
+   "fieldname": "column_break_udph",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "raison_tendance",
+   "fieldtype": "Select",
+   "label": "Raison tendance",
+   "options": "\nAugmentation de la production\nDemande plus importante du march\u00e9\nAugmentation du nombre de producteur\nCondition climatiques favorables\nChoix strat\u00e9gique de l'OP\nBaisse de production\nDiminution de la demande du march\u00e9\nDiminution du nombre de producteurs\nConditions climatiques d\u00e9favorable"
+  },
+  {
+   "fieldname": "section_break_rysf",
+   "fieldtype": "Section Break",
+   "label": "Gestion"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.warning == true",
+   "fieldname": "warning",
+   "fieldtype": "Check",
+   "label": "warning",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.prevent_calculation == true",
+   "fieldname": "prevent_calculation",
+   "fieldtype": "Check",
+   "label": "Prevent Calculation",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.prevent_validation == true",
+   "fieldname": "prevent_validation",
+   "fieldtype": "Check",
+   "label": "Prevent Validation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_imqo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.legacy_import == true",
+   "fieldname": "legacy_import",
+   "fieldtype": "Check",
+   "label": "Legacy import",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval: doc.prevent_check == true",
+   "fieldname": "prevent_check",
+   "fieldtype": "Check",
+   "label": "Prevent Check",
+   "read_only": 1
+  },
+  {
+   "fieldname": "producteur",
    "fieldtype": "Link",
-   "label": "Unite",
-   "options": "Unite"
+   "label": "Producteur",
+   "options": "Contact"
   },
   {
-   "fieldname": "valeur",
-   "fieldtype": "Currency",
-   "label": "Valeur"
+   "fieldname": "description_du_produit_column",
+   "fieldtype": "Column Break",
+   "label": "Description du produit"
   },
   {
-   "fieldname": "column_break_9mhy",
+   "fieldname": "information_sur_le_relev\u00e9_column",
+   "fieldtype": "Column Break",
+   "label": "Information sur le relev\u00e9"
+  },
+  {
+   "fieldname": "column_break_cbjo",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "column_break_tfbt",
+   "fieldname": "d\u00e9but_de_la_production",
+   "fieldtype": "Date",
+   "label": "D\u00e9but de la production",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fin_de_la_production",
+   "fieldtype": "Date",
+   "label": "Fin de la production",
+   "reqd": 1
+  },
+  {
+   "description": "En Hectar.",
+   "fieldname": "superficie_plant\u00e9e",
+   "fieldtype": "Float",
+   "label": "Superficie plant\u00e9e",
+   "precision": "2"
+  },
+  {
+   "description": "En Hectar.",
+   "fieldname": "superficie_r\u00e9colter",
+   "fieldtype": "Float",
+   "label": "Superficie r\u00e9colter",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_mlgs",
    "fieldtype": "Column Break"
+  },
+  {
+   "description": "En KiloGramme. 1KG= 0.001 T",
+   "fieldname": "volume_de_la_production",
+   "fieldtype": "Float",
+   "label": "Volume de la production",
+   "precision": "2"
+  },
+  {
+   "fieldname": "volume_perdu",
+   "fieldtype": "Percent",
+   "label": "Pourcentage de perte",
+   "precision": "2"
+  },
+  {
+   "depends_on": "eval:doc.volume_perdu > 0",
+   "fieldname": "valorisation_des_pertes_section",
+   "fieldtype": "Section Break",
+   "label": "Valorisation des pertes"
+  },
+  {
+   "fieldname": "column_break_nsgb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "valorisation_des_pertes",
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description",
+   "max_height": "70px"
+  },
+  {
+   "depends_on": "eval:doc.valorisation_des_pertes",
+   "fieldname": "raison_des_pertes",
+   "fieldtype": "Select",
+   "label": "Raison des pertes",
+   "mandatory_depends_on": "eval:doc.valorisation_des_pertes",
+   "options": "\nM\u00e9t\u00e9orologique\nFongique\nBact\u00e9rien\nAnimalier\nHumaine\nAutre",
+   "precision": "2"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Releve prix et production",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "revente_1_section",
+   "fieldtype": "Section Break",
+   "label": "Revente 1"
+  },
+  {
+   "fieldname": "revente",
+   "fieldtype": "Table",
+   "options": "PPROD revente"
+  },
+  {
+   "fieldname": "mode_de_production",
+   "fieldtype": "Select",
+   "label": "Mode de production",
+   "options": "\nHVE\nBiologique\nConventionnel\nAutre",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.mode_de_production == 'Autre'",
+   "fieldname": "pr\u00e9ciser",
+   "fieldtype": "Data",
+   "label": "Pr\u00e9ciser",
+   "mandatory_depends_on": "eval:doc.mode_de_production == 'Autre'"
+  },
+  {
+   "default": "0",
+   "fieldname": "valorisation_des_pertes",
+   "fieldtype": "Check",
+   "label": "Valorisation des pertes"
   }
  ],
  "index_web_pages_for_search": 1,
- "is_submittable": 1,
- "istable": 1,
  "links": [],
- "modified": "2023-04-13 17:32:00.723007",
+ "modified": "2023-06-20 13:41:34.284319",
  "modified_by": "Administrator",
  "module": "Sisep",
  "name": "Releve prix et production",
- "naming_rule": "Expression",
+ "naming_rule": "Random",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []

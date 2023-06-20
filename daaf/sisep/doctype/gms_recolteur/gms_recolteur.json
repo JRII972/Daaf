@@ -10,7 +10,13 @@
   "limite_similarit\u00e9_d\u00e9tection_nom_de_produit",
   "aucun_produit_trouv\u00e9",
   "limite_sous_s\u00e9quence",
-  "limite_sous_s\u00e9quence_multiple"
+  "limite_sous_s\u00e9quence_multiple",
+  "unit\u00e9_par_d\u00e9faut",
+  "cr\u00e9e_unit\u00e9_inexistence",
+  "dillon_import",
+  "fdf_import",
+  "legacy_produit",
+  "legacy_unite"
  ],
  "fields": [
   {
@@ -33,19 +39,61 @@
    "default": "2",
    "fieldname": "limite_sous_s\u00e9quence",
    "fieldtype": "Int",
-   "label": "Limite sous s\u00e9quence"
+   "label": "Limite sous s\u00e9quence",
+   "reqd": 1
   },
   {
    "default": "1",
    "fieldname": "limite_sous_s\u00e9quence_multiple",
    "fieldtype": "Int",
-   "label": "Limite sous s\u00e9quence multiple"
+   "label": "Limite sous s\u00e9quence multiple",
+   "reqd": 1
+  },
+  {
+   "fieldname": "unit\u00e9_par_d\u00e9faut",
+   "fieldtype": "Link",
+   "label": "Unit\u00e9 par D\u00e9faut",
+   "options": "Unite",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "cr\u00e9e_unit\u00e9_inexistence",
+   "fieldtype": "Check",
+   "label": "Cr\u00e9e unit\u00e9 inexistence"
+  },
+  {
+   "fieldname": "dillon_import",
+   "fieldtype": "Link",
+   "label": "Dillon import",
+   "options": "Lieux Mercuriale",
+   "reqd": 1
+  },
+  {
+   "fieldname": "fdf_import",
+   "fieldtype": "Link",
+   "label": "FDF import",
+   "options": "Lieux Mercuriale",
+   "reqd": 1
+  },
+  {
+   "fieldname": "legacy_produit",
+   "fieldtype": "Attach",
+   "label": "Legacy produit",
+   "reqd": 1
+  },
+  {
+   "fieldname": "legacy_unite",
+   "fieldtype": "Link",
+   "label": "Legacy unite",
+   "options": "Unite",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2023-06-15 14:11:11.798532",
+ "modified": "2023-06-16 23:35:27.524564",
  "modified_by": "Administrator",
  "module": "Sisep",
  "name": "GMS Recolteur",
