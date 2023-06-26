@@ -10,15 +10,15 @@ def pprod_contact_query(doctype, txt, searchfield, start, page_len, filters):
     print(doctype, txt, searchfield, start, page_len, filters)
     Affectation = DocType("Affectation Prix et production") 
     Affectation_sub = DocType("Affectation PPROD contact") 
-    Contact = DocType("Contact") 
+    Etablissements = DocType("Etablissements") 
 
 
     
     result = (
         frappe.qb.from_(Affectation) \
             .inner_join(Affectation_sub).on(Affectation.name == Affectation_sub.parent)\
-            .inner_join(Contact).on(Contact.name == Affectation_sub.contact)\
-            .select(Contact.name, Contact.status) \
+            .inner_join(Etablissements).on(Etablissements.name == Affectation_sub.Etablissements)\
+            .select(Etablissements.name, Etablissements.status) \
             .where(
                 (Affectation.début_de_laffectation <= getdate()) &
                 (
@@ -27,7 +27,7 @@ def pprod_contact_query(doctype, txt, searchfield, start, page_len, filters):
                 ) & 
                 (Affectation.enquêteur == 'Administrator') &
                 (
-                    Contact.name.like('%' + txt + '%')
+                    Etablissements.name.like('%' + txt + '%')
                 )
             ) \
             .offset(start).limit(page_len)

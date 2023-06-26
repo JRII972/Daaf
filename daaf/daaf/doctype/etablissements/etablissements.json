@@ -58,7 +58,20 @@
   "denomination_usuelle_etablissement",
   "activite_principale_etablissement",
   "nomenclature_activite_principale_etablissement",
-  "caractere_employeur_etablissement"
+  "caractere_employeur_etablissement",
+  "pacage",
+  "etat_pacage",
+  "date_d\u00e9but_validit\u00e9_sigc",
+  "date_fin_validit\u00e9_sigc",
+  "date_cl\u00f4ture",
+  "motif_cl\u00f4ture",
+  "date_installation",
+  "adresse_pac",
+  "t\u00e9l\u00e9phone_adresse_postale",
+  "t\u00e9l\u00e9phone_adresse_si\u00e8ge",
+  "forme_juridique_pac",
+  "portable_1",
+  "portable_2"
  ],
  "fields": [
   {
@@ -97,8 +110,9 @@
    "label": "activite Principale Registre Metiers Etablissement"
   },
   {
+   "default": "0",
    "fieldname": "etablissement_siege",
-   "fieldtype": "Data",
+   "fieldtype": "Check",
    "label": "etablissement Siege"
   },
   {
@@ -320,11 +334,76 @@
    "fieldname": "caractere_employeur_etablissement",
    "fieldtype": "Data",
    "label": "caractere Employeur Etablissement"
+  },
+  {
+   "fieldname": "pacage",
+   "fieldtype": "Data",
+   "label": "Pacage"
+  },
+  {
+   "fieldname": "etat_pacage",
+   "fieldtype": "Data",
+   "label": "Etat pacage"
+  },
+  {
+   "fieldname": "date_d\u00e9but_validit\u00e9_sigc",
+   "fieldtype": "Date",
+   "label": "Date d\u00e9but validit\u00e9 SIGC"
+  },
+  {
+   "fieldname": "date_fin_validit\u00e9_sigc",
+   "fieldtype": "Date",
+   "label": "Date fin validit\u00e9 SIGC"
+  },
+  {
+   "fieldname": "date_cl\u00f4ture",
+   "fieldtype": "Date",
+   "label": "Date cl\u00f4ture"
+  },
+  {
+   "fieldname": "motif_cl\u00f4ture",
+   "fieldtype": "Data",
+   "label": "Motif cl\u00f4ture"
+  },
+  {
+   "fieldname": "date_installation",
+   "fieldtype": "Date",
+   "label": "Date installation"
+  },
+  {
+   "fieldname": "adresse_pac",
+   "fieldtype": "Small Text",
+   "label": "Adresse PAC "
+  },
+  {
+   "fieldname": "t\u00e9l\u00e9phone_adresse_postale",
+   "fieldtype": "Data",
+   "label": "T\u00e9l\u00e9phone adresse postale"
+  },
+  {
+   "fieldname": "t\u00e9l\u00e9phone_adresse_si\u00e8ge",
+   "fieldtype": "Data",
+   "label": "T\u00e9l\u00e9phone adresse si\u00e8ge"
+  },
+  {
+   "fieldname": "forme_juridique_pac",
+   "fieldtype": "Data",
+   "label": "Forme juridique - Pac"
+  },
+  {
+   "fieldname": "portable_1",
+   "fieldtype": "Data",
+   "label": "Portable 1"
+  },
+  {
+   "fieldname": "portable_2",
+   "fieldtype": "Data",
+   "label": "Portable 2"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-06-20 14:58:52.137851",
+ "modified": "2023-06-21 10:39:45.185425",
  "modified_by": "Administrator",
  "module": "Daaf",
  "name": "Etablissements",
